@@ -1,0 +1,1 @@
+export default function Logo() {  return (    <div className="text-yellow-500 font-extrabold text-3xl tracking-widest">      TTT    </div>  );}
