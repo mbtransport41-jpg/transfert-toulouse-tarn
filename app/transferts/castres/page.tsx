@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Metadata } from 'next';
 import DestinationHero from '@/app/components/DestinationHero';
 import DestinationIntro from '@/app/components/DestinationIntro';
@@ -56,7 +57,9 @@ export default function CastresPage() {
         <DestinationFAQ city={destination.name} items={destination.faqItems} />
         <section className="bg-white px-6 py-16 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-4xl">
-            <BookingForm />
+            <Suspense fallback={null}>
+              <BookingForm />
+            </Suspense>
           </div>
         </section>
       </main>
