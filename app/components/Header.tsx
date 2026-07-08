@@ -40,7 +40,7 @@ export default function Header() {
                 <div className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-white/10 bg-black p-2 shadow-2xl z-[9999]">
                   <a href="/transferts/castres" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
                     Castres
-                  </a>
+                  </a> 
                   <a href="/transferts/albi" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
                     Albi
                   </a>

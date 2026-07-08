@@ -31,6 +31,23 @@ const initialForm: FormValues = {
   message: '',
 };
 
+const tarifs: Record<string, number> = {
+  "Aéroport Toulouse-Blagnac|Castres": 119,
+  "Gare Toulouse Matabiau|Castres": 109,
+
+  "Aéroport Toulouse-Blagnac|Albi": 129,
+  "Gare Toulouse Matabiau|Albi": 119,
+
+  "Aéroport Toulouse-Blagnac|Mazamet": 129,
+  "Gare Toulouse Matabiau|Mazamet": 119,
+
+  "Aéroport Toulouse-Blagnac|Lavaur": 109,
+  "Gare Toulouse Matabiau|Lavaur": 99,
+
+  "Aéroport Toulouse-Blagnac|Revel": 109,
+  "Gare Toulouse Matabiau|Revel": 99,
+};
+
 const SERVICE_ID = 'service_qq5eacp';
 const TEMPLATE_ID = 'template_72td9cf';
 const PUBLIC_KEY = 'Ei0v13zei0qINODgj';
@@ -39,6 +56,9 @@ export default function BookingForm() {
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState<FormValues>(initialForm);
   const [status, setStatus] = useState<Status>({ type: 'idle', message: '' });
+
+const trajet = `${formData.pickup}|${formData.destination}`;
+const prix = tarifs[trajet] ?? null;
 
   useEffect(() => {
     emailjs.init(PUBLIC_KEY);
