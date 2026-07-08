@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Metadata } from 'next';
 import DestinationHero from '@/app/components/DestinationHero';
 import DestinationIntro from '@/app/components/DestinationIntro';
