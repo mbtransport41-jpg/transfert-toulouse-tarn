@@ -6,7 +6,7 @@ const navItems = [
   { label: 'À propos', href: '/a-propos' },
   { label: 'Nos services', href: '/nos-services' },
   { label: 'Tarifs', href: '/tarifs' },
-  { label: 'Avis', href: ' /avis' },
+  { label: 'Avis', href: '/avis' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -37,7 +37,7 @@ export default function Header() {
                     <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.92l3.71-3.69a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.2 8.29a.75.75 0 01.03-1.08z" />
                   </svg>
                 </summary>
-                <div className="absolute left-0 top-full mt-3 w-56 rounded-2xl border border-white/10 bg-black/95 p-2 shadow-2xl shadow-black/40 z-50">
+                <div className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-white/10 bg-black p-2 shadow-2xl z-50">
                   <a href="/transferts/castres" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
                     Castres
                   </a>
