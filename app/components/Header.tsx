@@ -6,7 +6,7 @@ const navItems = [
   { label: 'À propos', href: '/a-propos' },
   { label: 'Nos services', href: '/nos-services' },
   { label: 'Tarifs', href: '/tarifs' },
-  { label: 'Avis', href: 'avis' },
+  { label: 'Avis', href: ' /avis' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -76,13 +76,8 @@ export default function Header() {
         
       </div>
 
-      <nav className="flex flex-wrap items-center justify-center gap-3 border-t border-white/10 px-4 py-3 text-sm font-medium text-white lg:hidden">
-        {navItems.map((item) => (
-          <a key={item.label} href={item.href} className="rounded-full px-3 py-2 transition hover:bg-white/10 hover:text-amber-300">
-            {item.label}
-          </a>
-        ))}
-      </nav>
+      <nav className="flex flex-wrap items-center justify-center gap-3 border-t border-white/10 px-4 py-3 text-sm font-medium text-white lg:hidden">{navItems.map((item) => item.label === "Nos transferts" ? (<details key={item.label} className="relative"><summary className="cursor-pointer list-none rounded-full px-3 py-2 transition hover:bg-white/10 hover:text-amber-300">Nos transferts</summary>
+      <div className="absolute left-0 bottom-full mb-2 w-48 rounded-xl border border-white/10 bg-black p-2 z-50"><a href="/transferts/castres" className="block rounded-lg px-3 py-2 hover:bg-white/10">Castres</a><a href="/transferts/albi" className="block rounded-lg px-3 py-2 hover:bg-white/10">Albi</a><a href="/transferts/mazamet" className="block rounded-lg px-3 py-2 hover:bg-white/10">Mazamet</a><a href="/transferts/lavaur" className="block rounded-lg px-3 py-2 hover:bg-white/10">Lavaur</a><a href="/transferts/revel" className="block rounded-lg px-3 py-2 hover:bg-white/10">Revel</a></div></details>) : (<a key={item.label} href={item.href} className="rounded-full px-3 py-2 transition hover:bg-white/10 hover:text-amber-300" >{item.label} </a>))}</nav>
     </header>
   );
 }
