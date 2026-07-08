@@ -12,7 +12,7 @@ const navItems = [
 
 export default function Header() {
   return (
-    <header className="relative sticky top-0 z-50 w-full border-b border-amber-500/20 bg-black/95 backdrop-blur">
+    <header className="relative sticky top-0 z-[9999] overflow-visible w-full border-b border-amber-500/20 bg-black/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         
 
