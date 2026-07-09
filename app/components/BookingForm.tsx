@@ -32,19 +32,19 @@ const initialForm: FormValues = {
 };
 
 const tarifs: Record<string, number> = {
-  "Aéroport Toulouse-Blagnac|Castres": 119,
+  "Aéroport Toulouse Blagnac|Castres": 119,
   "Gare Toulouse Matabiau|Castres": 109,
 
-  "Aéroport Toulouse-Blagnac|Albi": 129,
+  "Aéroport Toulouse Blagnac|Albi": 129,
   "Gare Toulouse Matabiau|Albi": 119,
 
-  "Aéroport Toulouse-Blagnac|Mazamet": 129,
+  "Aéroport Toulouse Blagnac|Mazamet": 129,
   "Gare Toulouse Matabiau|Mazamet": 119,
 
-  "Aéroport Toulouse-Blagnac|Lavaur": 109,
+  "Aéroport Toulouse Blagnac|Lavaur": 109,
   "Gare Toulouse Matabiau|Lavaur": 99,
 
-  "Aéroport Toulouse-Blagnac|Revel": 109,
+  "Aéroport Toulouse Blagnac|Revel": 109,
   "Gare Toulouse Matabiau|Revel": 99,
 };
 
