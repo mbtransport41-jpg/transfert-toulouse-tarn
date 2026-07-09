@@ -42,12 +42,33 @@ export default function BookingForm() {
     emailjs.init(PUBLIC_KEY);
   }, []);
 
+const handleStripePayment = async () => {
+  const response = await fetch("/api/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      prix: 119,
+    }),
+  });
+
+  const data = await response.json();
+
+if (data.url) {
+  window.location.href = data.url;
+}
+};
+
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  
+  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -244,6 +265,16 @@ export default function BookingForm() {
             {status.message}
           </div>
         ) : null}
+
+<button 
+type="button"
+onClick={handleStripePayment} 
+className="inline-flex items-center 
+justify-center rounded-full bg-green-600
+px-6 py-3 text-white font-semibold
+hover:bg-green-700 mb-4 w-full">
+    Payer maintenant
+</button>
 
         <button
           type="submit"

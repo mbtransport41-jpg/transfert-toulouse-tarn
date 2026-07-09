@@ -52,7 +52,7 @@ export default function Reservation() {
             />
           </div>
           <p className="mt-4 text-sm text-slate-200">
-            Demandez un transfert effacé : pour recevoir une estimation rapide et un accompagnement personnalisé.
+            Demandez un transfert efficace : pour recevoir une estimation rapide et un accompagnement personnalisé.
           </p>
         </div>
 
