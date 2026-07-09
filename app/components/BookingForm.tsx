@@ -202,31 +202,44 @@ const prix = tarifs[trajet] ?? null;
             <label htmlFor="pickup" className="mb-2 block text-sm font-medium text-slate-700">
               Adresse de prise en charge
             </label>
-            <input
-              id="pickup"
-              name="pickup"
-              value={formData.pickup}
-              onChange={handleChange}
-              required
-              className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-              placeholder="Aéroport de Toulouse, hôtel, adresse..."
-            />
+
+            <select
+  id="pickup"
+  name="pickup"
+  value={formData.pickup}
+  onChange={handleChange}
+  required
+  className="w-full rounded-2xl border border-slate-300 px-4 py-3"
+>
+  <option value="">Choisir le lieu de prise en charge</option>
+  <option value="Aéroport Toulouse Blagnac">Aéroport Toulouse Blagnac</option>
+  <option value="Gare Toulouse Matabiau">Gare Toulouse Matabiau</option>
+</select>
+              
+            
           </div>
 
           <div>
             <label htmlFor="destination" className="mb-2 block text-sm font-medium text-slate-700">
               Destination
             </label>
-            <input
-              id="destination"
-              name="destination"
-              value={formData.destination}
-              onChange={handleChange}
-              required
-              className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-              placeholder="Tarn, centre-ville, gare..."
-            />
-          </div>
+
+<select
+  id="destination"
+  name="destination"
+  value={formData.destination}
+  onChange={handleChange}
+  required
+  className="w-full rounded-2xl border border-slate-300 px-4 py-3"
+>
+  <option value="">Choisir une destination</option>
+  <option value="Castres">Castres</option>
+  <option value="Albi">Albi</option>
+  <option value="Mazamet">Mazamet</option>
+  <option value="Lavaur">Lavaur</option>
+  <option value="Revel">Revel</option>
+</select>
+</div>
 
           <div>
             <label htmlFor="date" className="mb-2 block text-sm font-medium text-slate-700">
