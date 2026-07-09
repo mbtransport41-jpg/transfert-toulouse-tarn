@@ -59,7 +59,7 @@ English Spoken
 <div className="border-t border-amber-500/20">
 <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-6 text-sm text-slate-500 md:flex-row">
 <p>
-© 2026 Toulouse Tarn Transfer. Tous droits réservés.
+© 2026 Toulouse Tarn Transfert. Tous droits réservés.
 </p>
 <p>
 Chauffeur privé Toulouse • Castres • Albi • Lavaur • Revel • Mazamet • Aéroport Toulouse-Blagnac

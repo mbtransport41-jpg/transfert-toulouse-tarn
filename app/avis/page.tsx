@@ -110,7 +110,7 @@ export default function AvisPage() {const schema = {"@context": "https://schema.
 
 <section className="mx-auto max-w-7xl px-6 pb-24">
 <h2 className="text-4xl font-bold text-white">Les derniers avis de nos clients  </h2>
-<p className="mt-4 text-slate-400">    Chaque avis est laissé par un client ayant utilisé Toulouse Tarn Transfer.  </p>
+<p className="mt-4 text-slate-400">    Chaque avis est laissé par un client ayant utilisé Toulouse Tarn Transfert.  </p>
 <div className="mt-12 grid gap-8 lg:grid-cols-2">
 <article className="rounded-3xl bg-zinc-900 border border-zinc-800 p-8">
 <div className="text-amber-400 text-2xl">        ★★★★★      </div>

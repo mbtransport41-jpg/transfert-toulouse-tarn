@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import emailjs from '@emailjs/browser';
 
 type FormValues = {
@@ -31,44 +30,17 @@ const initialForm: FormValues = {
   message: '',
 };
 
-const tarifs: Record<string, number> = {
-  "Aéroport Toulouse Blagnac|Castres": 119,
-  "Gare Toulouse Matabiau|Castres": 109,
-
-  "Aéroport Toulouse Blagnac|Albi": 129,
-  "Gare Toulouse Matabiau|Albi": 119,
-
-  "Aéroport Toulouse Blagnac|Mazamet": 129,
-  "Gare Toulouse Matabiau|Mazamet": 119,
-
-  "Aéroport Toulouse Blagnac|Lavaur": 109,
-  "Gare Toulouse Matabiau|Lavaur": 99,
-
-  "Aéroport Toulouse Blagnac|Revel": 109,
-  "Gare Toulouse Matabiau|Revel": 99,
-};
-
 const SERVICE_ID = 'service_qq5eacp';
 const TEMPLATE_ID = 'template_72td9cf';
 const PUBLIC_KEY = 'Ei0v13zei0qINODgj';
 
 export default function BookingForm() {
-  const searchParams = useSearchParams();
   const [formData, setFormData] = useState<FormValues>(initialForm);
   const [status, setStatus] = useState<Status>({ type: 'idle', message: '' });
 
-const trajet = `${formData.pickup}|${formData.destination}`;
-const prix = tarifs[trajet] ?? null;
-
   useEffect(() => {
     emailjs.init(PUBLIC_KEY);
-    
-    // Pre-fill destination from query parameter
-    const destination = searchParams.get('destination');
-    if (destination) {
-      setFormData((prev) => ({ ...prev, destination }));
-    }
-  }, [searchParams]);
+  }, []);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -119,7 +91,7 @@ const prix = tarifs[trajet] ?? null;
   };
 
   return (
-    <section id="booking" className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <div className="mb-6">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">Réservation</p>
         <h2 className="mt-2 text-3xl font-bold text-slate-900">Demandez un transfert</h2>
@@ -202,44 +174,31 @@ const prix = tarifs[trajet] ?? null;
             <label htmlFor="pickup" className="mb-2 block text-sm font-medium text-slate-700">
               Adresse de prise en charge
             </label>
-
-            <select
-  id="pickup"
-  name="pickup"
-  value={formData.pickup}
-  onChange={handleChange}
-  required
-  className="w-full rounded-2xl border border-slate-300 px-4 py-3"
->
-  <option value="">Choisir le lieu de prise en charge</option>
-  <option value="Aéroport Toulouse Blagnac">Aéroport Toulouse Blagnac</option>
-  <option value="Gare Toulouse Matabiau">Gare Toulouse Matabiau</option>
-</select>
-              
-            
+            <input
+              id="pickup"
+              name="pickup"
+              value={formData.pickup}
+              onChange={handleChange}
+              required
+              className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+              placeholder="Aéroport de Toulouse, hôtel, adresse..."
+            />
           </div>
 
           <div>
             <label htmlFor="destination" className="mb-2 block text-sm font-medium text-slate-700">
               Destination
             </label>
-
-<select
-  id="destination"
-  name="destination"
-  value={formData.destination}
-  onChange={handleChange}
-  required
-  className="w-full rounded-2xl border border-slate-300 px-4 py-3"
->
-  <option value="">Choisir une destination</option>
-  <option value="Castres">Castres</option>
-  <option value="Albi">Albi</option>
-  <option value="Mazamet">Mazamet</option>
-  <option value="Lavaur">Lavaur</option>
-  <option value="Revel">Revel</option>
-</select>
-</div>
+            <input
+              id="destination"
+              name="destination"
+              value={formData.destination}
+              onChange={handleChange}
+              required
+              className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+              placeholder="Tarn, centre-ville, gare..."
+            />
+          </div>
 
           <div>
             <label htmlFor="date" className="mb-2 block text-sm font-medium text-slate-700">
@@ -285,29 +244,6 @@ const prix = tarifs[trajet] ?? null;
             {status.message}
           </div>
         ) : null}
-
-{prix && (
-  <div className="mb-6 rounded-2xl border border-amber-500 bg-amber-50 p-5">
-    <p className="text-lg font-bold text-black">
-      Prix du trajet : {prix} € TTC
-    </p>
-
-    <label className="mt-4 mb-2 block font-semibold text-black">
-      Mode de paiement
-    </label>
-
-    <select
-      name="payment"
-      className="w-full rounded-xl border p-3"
-      required
-    >
-      <option value="">Choisissez un mode de paiement</option>
-      <option value="stripe">💳 Carte bancaire en ligne (Stripe)</option>
-      <option value="tpe">💳 Carte bancaire à bord (TPE)</option>
-      <option value="cash">💶 Espèces à bord</option>
-    </select>
-  </div>
-)}
 
         <button
           type="submit"
