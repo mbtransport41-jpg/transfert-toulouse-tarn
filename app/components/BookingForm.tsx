@@ -273,6 +273,29 @@ const prix = tarifs[trajet] ?? null;
           </div>
         ) : null}
 
+{prix && (
+  <div className="mb-6 rounded-2xl border border-amber-500 bg-amber-50 p-5">
+    <p className="text-lg font-bold text-black">
+      Prix du trajet : {prix} € TTC
+    </p>
+
+    <label className="mt-4 mb-2 block font-semibold text-black">
+      Mode de paiement
+    </label>
+
+    <select
+      name="payment"
+      className="w-full rounded-xl border p-3"
+      required
+    >
+      <option value="">Choisissez un mode de paiement</option>
+      <option value="stripe">💳 Carte bancaire en ligne (Stripe)</option>
+      <option value="tpe">💳 Carte bancaire à bord (TPE)</option>
+      <option value="cash">💶 Espèces à bord</option>
+    </select>
+  </div>
+)}
+
         <button
           type="submit"
           disabled={status.type === 'loading'}
