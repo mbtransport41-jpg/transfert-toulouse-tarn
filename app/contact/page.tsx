@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-black text-white">
@@ -46,12 +48,12 @@ export default function ContactPage() {
               Pour toute demande de transfert privé, navette aéroport, transport gare ou mise à disposition d'un
               chauffeur privé, utilisez le formulaire de réservation disponible sur notre site.
             </p>
-            <a
+            <Link
               href="/#booking"
               className="inline-block bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-4 rounded-full transition"
             >
               Réserver maintenant
-            </a>
+            </Link>
           </div>
         </div>
 

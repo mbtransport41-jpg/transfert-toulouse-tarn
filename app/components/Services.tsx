@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   {
@@ -108,18 +109,18 @@ export default function Services() {
                   ))}
                 </div>
                 <div className="mt-5 grid grid-cols-2 gap-2">
-                  <a
+                  <Link
                     href={`/transfert/${destination.airportSlug}`}
                     className="inline-flex justify-center rounded-full border border-amber-400/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-300 transition hover:bg-amber-500 hover:text-black"
                   >
                     Aéroport
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href={`/transfert/${destination.stationSlug}`}
                     className="inline-flex justify-center rounded-full bg-amber-500 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-amber-400"
                   >
                     Gare
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>

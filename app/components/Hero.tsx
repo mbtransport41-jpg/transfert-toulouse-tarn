@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <section id="hero" className="relative isolate min-h-screen overflow-hidden bg-black text-white">
@@ -40,18 +42,18 @@ export default function Hero() {
           </ul>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <a
-              href="#booking"
+            <Link
+              href="/#booking"
               className="rounded-full bg-amber-500 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black shadow-[0_10px_30px_rgba(245,158,11,0.25)] transition duration-300 hover:-translate-y-1 hover:bg-amber-400"
             >
               Réserver maintenant
-            </a>
-            <a
-              href="#services"
+            </Link>
+            <Link
+              href="/#services"
               className="rounded-full border border-amber-400/70 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-amber-200 transition duration-300 hover:-translate-y-1 hover:bg-white/10"
             >
               Nos destinations
-            </a>
+            </Link>
           </div>
         </div>
       </div>

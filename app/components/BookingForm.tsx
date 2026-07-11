@@ -144,7 +144,7 @@ if (data.url) {
   };
 
   return (
-    <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <section id="booking" className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
       <div className="mb-6">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">Réservation</p>
         <h2 className="mt-2 text-3xl font-bold text-slate-900">Demandez un transfert</h2>

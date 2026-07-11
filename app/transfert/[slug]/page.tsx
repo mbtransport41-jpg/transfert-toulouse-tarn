@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import Header from "@/app/components/Header";
 import BookingForm from "@/app/components/BookingForm";
 import { getOtherTransfers, getTransferBySlug, transfers } from "@/app/data/transfert";
 
@@ -110,7 +110,6 @@ export default async function TransferPage({ params }: { params: Params }) {
 
   return (
     <>
-      <Header />
       <main className="bg-black text-white">
         <section className="relative overflow-hidden">
           <div className="relative h-[420px] w-full sm:h-[520px]">
@@ -137,12 +136,12 @@ export default async function TransferPage({ params }: { params: Params }) {
               <span className="rounded-full bg-white px-4 py-2">Durée moyenne : {transfer.temps}</span>
               <span className="rounded-full bg-white px-4 py-2">Distance : {transfer.distanceKm} km</span>
             </div>
-            <a
+            <Link
               href={`/#booking?destination=${encodeURIComponent(transfer.arrivee)}`}
               className="mt-8 inline-flex rounded-full bg-amber-500 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-amber-400"
             >
               Réserver
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -218,7 +217,7 @@ export default async function TransferPage({ params }: { params: Params }) {
             <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Autres destinations</h2>
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {internalLinks.map((item) => (
-                <a
+                <Link
                   key={item.slug}
                   href={`/transfert/${item.slug}`}
                   className="rounded-2xl border border-slate-200 bg-white p-5 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50"
@@ -230,7 +229,7 @@ export default async function TransferPage({ params }: { params: Params }) {
                     {item.depart} -&gt; {item.arrivee}
                   </p>
                   <p className="mt-2 text-sm text-slate-600">Des {item.prix} EUR</p>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

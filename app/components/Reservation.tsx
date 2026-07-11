@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Reservation() {
   return (
@@ -21,12 +22,12 @@ export default function Reservation() {
             height={480}
             className="h-auto w-full object-contain"
           />
-          <a
+          <Link
             href="/a-propos"
             className="mt-6 inline-flex rounded-full bg-amber-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-amber-400"
           >
             En savoir plus
-          </a>
+          </Link>
         </div>
 
         <div className="rounded-[2rem] border border-white/15 bg-black/40 px-8 py-12 text-center shadow-2xl backdrop-blur-sm sm:px-10">
@@ -36,12 +37,12 @@ export default function Reservation() {
           <h2 className="mt-4 text-xl font-medium italic text-white sm:text-2xl">
             Réservez en quelques clics votre chauffeur privé
           </h2>
-          <a
-            href="#booking"
+          <Link
+            href="/#booking"
             className="mt-8 inline-flex rounded-full bg-amber-500 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-amber-400"
           >
             Réserver maintenant
-          </a>
+          </Link>
           <div className="mt-8 flex justify-center">
             <Image
               src="/reserve 2424.png"

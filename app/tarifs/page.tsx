@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = {
   title: "Tarifs VTC Toulouse, Castres, Albi | Tarn Transfert",
   description:
@@ -46,9 +48,9 @@ export default function TarifsPage() {
         <div className="rounded-3xl bg-amber-500 text-black p-10 text-center">
           <h2 className="text-3xl font-bold">Demandez votre devis gratuitement</h2>
           <p className="mt-4 text-lg">Réponse rapide • Sans engagement • Disponible 7j/7</p>
-          <a href="/#booking" className="mt-8 inline-block rounded-full bg-black text-white px-8 py-4 font-bold">
+          <Link href="/#booking" className="mt-8 inline-block rounded-full bg-black text-white px-8 py-4 font-bold">
             Demander un devis
-          </a>
+          </Link>
         </div>
       </section>
     </main>
