@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import emailjs from '@emailjs/browser';
 
 type FormValues = {
@@ -35,12 +36,43 @@ const TEMPLATE_ID = 'template_72td9cf';
 const PUBLIC_KEY = 'Ei0v13zei0qINODgj';
 
 export default function BookingForm() {
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState<FormValues>(initialForm);
   const [status, setStatus] = useState<Status>({ type: 'idle', message: '' });
+const tarifs: Record<string, number> = {
+  "Aéroport Toulouse-Blagnac|Castres": 119,
+  "Gare Toulouse-Matabiau|Castres": 109,
 
+  "Aéroport Toulouse-Blagnac|Albi": 129,
+  "Gare Toulouse-Matabiau|Albi": 119,
+
+  "Aéroport Toulouse-Blagnac|Mazamet": 129,
+  "Gare Toulouse-Matabiau|Mazamet": 119,
+
+  "Aéroport Toulouse-Blagnac|Lavaur": 109,
+  "Gare Toulouse-Matabiau|Lavaur": 99,
+
+  "Aéroport Toulouse-Blagnac|Revel": 109,
+  "Gare Toulouse-Matabiau|Revel": 99,
+};
+
+const prix =
+  tarifs[`${formData.pickup}|${formData.destination}`] ?? 0;
   useEffect(() => {
     emailjs.init(PUBLIC_KEY);
   }, []);
+
+  useEffect(() => {
+    const destinationFromUrl = searchParams.get('destination');
+    if (!destinationFromUrl) {
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      destination: destinationFromUrl,
+    }));
+  }, [searchParams]);
 
 const handleStripePayment = async () => {
   const response = await fetch("/api/create-checkout-session", {
@@ -49,7 +81,7 @@ const handleStripePayment = async () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      prix: 119,
+      prix,
     }),
   });
 
@@ -195,30 +227,43 @@ if (data.url) {
             <label htmlFor="pickup" className="mb-2 block text-sm font-medium text-slate-700">
               Adresse de prise en charge
             </label>
-            <input
-              id="pickup"
-              name="pickup"
-              value={formData.pickup}
-              onChange={handleChange}
-              required
-              className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-              placeholder="Aéroport de Toulouse, hôtel, adresse..."
-            />
+            <select
+  id="pickup"
+  name="pickup"
+  value={formData.pickup}
+  onChange={handleChange}
+  required
+  className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+>
+  <option value="">Choisir un départ</option>
+  <option value="Aéroport Toulouse-Blagnac">
+    ✈️ Aéroport Toulouse-Blagnac
+  </option>
+  <option value="Gare Toulouse-Matabiau">
+    🚆 Gare Toulouse-Matabiau
+  </option>
+</select>
           </div>
 
           <div>
             <label htmlFor="destination" className="mb-2 block text-sm font-medium text-slate-700">
               Destination
             </label>
-            <input
-              id="destination"
-              name="destination"
-              value={formData.destination}
-              onChange={handleChange}
-              required
-              className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-              placeholder="Tarn, centre-ville, gare..."
-            />
+           <select
+  id="destination"
+  name="destination"
+  value={formData.destination}
+  onChange={handleChange}
+  required
+  className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+>
+  <option value="">Choisir une destination</option>
+  <option value="Castres">Castres</option>
+  <option value="Albi">Albi</option>
+  <option value="Mazamet">Mazamet</option>
+  <option value="Lavaur">Lavaur</option>
+  <option value="Revel">Revel</option>
+</select>
           </div>
 
           <div>
@@ -273,6 +318,15 @@ className="inline-flex items-center
 justify-center rounded-full bg-green-600
 px-6 py-3 text-white font-semibold
 hover:bg-green-700 mb-4 w-full">
+  
+{prix > 0 && (
+  <div className="rounded-2xl bg-amber-50 border border-amber-200 p-4 text-center">
+    <p className="text-sm text-slate-600">Tarif du transfert</p>
+    <p className="text-3xl font-bold text-amber-600">
+      {prix} €
+    </p>
+  </div>
+)}
     Payer maintenant
 </button>
 

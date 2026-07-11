@@ -22,26 +22,36 @@ const services = [
 const destinations = [
   {
     name: "Castres",
+    airportSlug: "aeroport-toulouse-castres",
+    stationSlug: "gare-matabiau-castres",
     image: "/Castres.png",
     prices: ["Aéroport dès 119 €", "Gare dès 109 €"],
   },
   {
     name: "Albi",
+    airportSlug: "aeroport-toulouse-albi",
+    stationSlug: "gare-matabiau-albi",
     image: "/photo albi.png",
     prices: ["Aéroport dès 129 €", "Gare dès 119 €"],
   },
   {
     name: "Mazamet",
+    airportSlug: "aeroport-toulouse-mazamet",
+    stationSlug: "gare-matabiau-mazamet",
     image: "/photo mazamet.png",
     prices: ["Aéroport dès 129 €", "Gare dès 119 €"],
   },
   {
     name: "Lavaur",
+    airportSlug: "aeroport-toulouse-lavaur",
+    stationSlug: "gare-matabiau-lavaur",
     image: "/lavaur.png",
     prices: ["Aéroport dès 109 €", "Gare dès 99 €"],
   },
   {
     name: "Revel",
+    airportSlug: "aeroport-toulouse-revel",
+    stationSlug: "gare-matabiau-revel",
     image: "/revel.png",
     prices: ["Aéroport dès 109 €", "Gare dès 99 €"],
   },
@@ -97,12 +107,20 @@ export default function Services() {
                     <p key={price}>{price}</p>
                   ))}
                 </div>
-                <a
-                  href="#booking"
-                  className="mt-5 inline-flex rounded-full border border-amber-400/40 px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-amber-300 transition hover:bg-amber-500 hover:text-black"
-                >
-                  Réserver
-                </a>
+                <div className="mt-5 grid grid-cols-2 gap-2">
+                  <a
+                    href={`/transfert/${destination.airportSlug}`}
+                    className="inline-flex justify-center rounded-full border border-amber-400/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-300 transition hover:bg-amber-500 hover:text-black"
+                  >
+                    Aéroport
+                  </a>
+                  <a
+                    href={`/transfert/${destination.stationSlug}`}
+                    className="inline-flex justify-center rounded-full bg-amber-500 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-amber-400"
+                  >
+                    Gare
+                  </a>
+                </div>
               </div>
             </article>
           ))}

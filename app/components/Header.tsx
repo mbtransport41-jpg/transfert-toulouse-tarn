@@ -36,15 +36,38 @@ export default function Header() {
                     <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.92l3.71-3.69a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.2 8.29a.75.75 0 01.03-1.08z" />
                   </svg>
                 </summary>
-                <div className="absolute left-0 top-full mt-3 w-56 rounded-2xl border border-white/10 bg-black/95 p-2 shadow-2xl shadow-black/40">
-                  <a href="#services" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
-                    Transferts Aéroport
+                <div className="absolute left-0 top-full mt-3 w-80 rounded-2xl border border-white/10 bg-black/95 p-3 shadow-2xl shadow-black/40">
+                  <p className="px-3 pb-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Aéroport</p>
+                  <a href="/transfert/aeroport-toulouse-castres" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Aéroport Toulouse - Castres
                   </a>
-                  <a href="#services" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
-                    Transferts Gare
+                  <a href="/transfert/aeroport-toulouse-albi" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Aéroport Toulouse - Albi
                   </a>
-                  <a href="#services" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
-                    Mise à disposition
+                  <a href="/transfert/aeroport-toulouse-lavaur" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Aéroport Toulouse - Lavaur
+                  </a>
+                  <a href="/transfert/aeroport-toulouse-revel" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Aéroport Toulouse - Revel
+                  </a>
+                  <a href="/transfert/aeroport-toulouse-mazamet" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Aéroport Toulouse - Mazamet
+                  </a>
+                  <p className="mt-2 px-3 pb-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Gare Matabiau</p>
+                  <a href="/transfert/gare-matabiau-castres" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Gare Matabiau - Castres
+                  </a>
+                  <a href="/transfert/gare-matabiau-albi" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Gare Matabiau - Albi
+                  </a>
+                  <a href="/transfert/gare-matabiau-lavaur" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Gare Matabiau - Lavaur
+                  </a>
+                  <a href="/transfert/gare-matabiau-revel" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Gare Matabiau - Revel
+                  </a>
+                  <a href="/transfert/gare-matabiau-mazamet" className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300">
+                    Gare Matabiau - Mazamet
                   </a>
                 </div>
               </details>
