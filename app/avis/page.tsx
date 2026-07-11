@@ -5,8 +5,6 @@ import Link from "next/link";
 const GOOGLE_REVIEW_URL =
   process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL ??
   "https://search.google.com/local/writereview?placeid=PLACE_ID_A_CONFIGURER";
-const GOOGLE_PLACE_ID = process.env.GOOGLE_PLACE_ID;
-const GOOGLE_API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 
 export const metadata: Metadata = {
   title: "Avis clients | Toulouse Tarn Transfert",
@@ -39,107 +37,34 @@ type ReviewData = {
 };
 
 async function getReviewData(): Promise<ReviewData> {
-  if (!GOOGLE_PLACE_ID || !GOOGLE_API_KEY) {
-    return {
-      rating: 5,
-      reviewCount: 28,
-      source: "fallback",
-      reviews: [
-        {
-          author_name: "Client local",
-          rating: 5,
-          text:
-            "Ponctualité, conduite agréable et véhicule impeccable. Service fluide du début à la fin.",
-          relative_time_description: "récemment",
-        },
-        {
-          author_name: "Voyageuse fréquente",
-          rating: 5,
-          text:
-            "Réservation simple, chauffeur sérieux et arrivée à l'heure à chaque trajet.",
-          relative_time_description: "il y a 2 semaines",
-        },
-        {
-          author_name: "Client professionnel",
-          rating: 5,
-          text:
-            "Très bon service pour mes transferts vers l'aéroport. Communication claire et prestation premium.",
-          relative_time_description: "il y a 1 mois",
-        },
-      ],
-    };
-  }
-
-  try {
-    const url = new URL("https://maps.googleapis.com/maps/api/place/details/json");
-    url.searchParams.set("place_id", GOOGLE_PLACE_ID);
-    url.searchParams.set(
-      "fields",
-      "rating,user_ratings_total,reviews,name,url"
-    );
-    url.searchParams.set("language", "fr");
-    url.searchParams.set("key", GOOGLE_API_KEY);
-
-    const response = await fetch(url.toString(), {
-      next: { revalidate: 60 * 60 * 12 },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Google Places request failed with status ${response.status}`);
-    }
-
-    const payload = await response.json();
-    const result = payload?.result;
-    const reviews = Array.isArray(result?.reviews) ? result.reviews : [];
-
-    return {
-      rating: typeof result?.rating === "number" ? result.rating : 5,
-      reviewCount:
-        typeof result?.user_ratings_total === "number"
-          ? result.user_ratings_total
-          : reviews.length,
-      source: "google",
-      reviews: reviews.slice(0, 3).map((review: any) => ({
-        author_name: review.author_name ?? "Client Google",
-        rating: typeof review.rating === "number" ? review.rating : 5,
+  return {
+    rating: 5,
+    reviewCount: 28,
+    source: "fallback",
+    reviews: [
+      {
+        author_name: "Client local",
+        rating: 5,
         text:
-          review.text ??
-          "Avis publié sur la fiche Google Business Profile de Toulouse Tarn Transfert.",
-        relative_time_description:
-          review.relative_time_description ?? "récemment",
-        profile_photo_url: review.profile_photo_url,
-      })),
-    };
-  } catch {
-    return {
-      rating: 5,
-      reviewCount: 28,
-      source: "fallback",
-      reviews: [
-        {
-          author_name: "Client local",
-          rating: 5,
-          text:
-            "Ponctualité, conduite agréable et véhicule impeccable. Service fluide du début à la fin.",
-          relative_time_description: "récemment",
-        },
-        {
-          author_name: "Voyageuse fréquente",
-          rating: 5,
-          text:
-            "Réservation simple, chauffeur sérieux et arrivée à l'heure à chaque trajet.",
-          relative_time_description: "il y a 2 semaines",
-        },
-        {
-          author_name: "Client professionnel",
-          rating: 5,
-          text:
-            "Très bon service pour mes transferts vers l'aéroport. Communication claire et prestation premium.",
-          relative_time_description: "il y a 1 mois",
-        },
-      ],
-    };
-  }
+          "Ponctualité, conduite agréable et véhicule impeccable. Service fluide du début à la fin.",
+        relative_time_description: "récemment",
+      },
+      {
+        author_name: "Voyageuse fréquente",
+        rating: 5,
+        text:
+          "Réservation simple, chauffeur sérieux et arrivée à l'heure à chaque trajet.",
+        relative_time_description: "il y a 2 semaines",
+      },
+      {
+        author_name: "Client professionnel",
+        rating: 5,
+        text:
+          "Très bon service pour mes transferts vers l'aéroport. Communication claire et prestation premium.",
+        relative_time_description: "il y a 1 mois",
+      },
+    ],
+  };
 }
 
 function buildReviewSchema(data: ReviewData) {
