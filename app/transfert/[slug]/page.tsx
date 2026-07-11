@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
   if (!transfer) {
     return {
-      title: "Trajet introuvable | Toulouse Tarn Transfer",
+      title: "Trajet introuvable | Toulouse Tarn Transfert",
       description: "Cette page de transfert n'existe pas.",
     };
   }
@@ -63,7 +63,7 @@ function buildServiceSchema(slug: string) {
     areaServed: "Tarn, Occitanie",
     provider: {
       "@type": "LocalBusiness",
-      name: "Toulouse Tarn Transfer",
+      name: "Toulouse Tarn Transfert",
       telephone: "+33667711174",
       url: siteUrl,
     },
@@ -74,7 +74,7 @@ function buildServiceSchema(slug: string) {
       availability: "https://schema.org/InStock",
       url: `${siteUrl}/transfert/${transfer.slug}`,
     },
-    serviceType: "Chauffeur prive premium",
+    serviceType: "Chauffeur privé premium",
   };
 }
 
@@ -134,31 +134,31 @@ export default async function TransferPage({ params }: { params: Params }) {
             <p className="mt-4 max-w-3xl text-base text-slate-200 sm:text-lg">{transfer.intro}</p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-black">
               <span className="rounded-full bg-amber-400 px-4 py-2">Des {transfer.prix} EUR</span>
-              <span className="rounded-full bg-white px-4 py-2">Duree moyenne: {transfer.temps}</span>
-              <span className="rounded-full bg-white px-4 py-2">Distance: {transfer.distanceKm} km</span>
+              <span className="rounded-full bg-white px-4 py-2">Durée moyenne : {transfer.temps}</span>
+              <span className="rounded-full bg-white px-4 py-2">Distance : {transfer.distanceKm} km</span>
             </div>
             <a
               href={`/#booking?destination=${encodeURIComponent(transfer.arrivee)}`}
               className="mt-8 inline-flex rounded-full bg-amber-500 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-amber-400"
             >
-              Reserver
+              Réserver
             </a>
           </div>
         </section>
 
         <section className="bg-white px-6 py-16 text-slate-900 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-bold sm:text-4xl">Pourquoi choisir Toulouse Tarn Transfer</h2>
+            <h2 className="text-3xl font-bold sm:text-4xl">Pourquoi choisir Toulouse Tarn Transfert</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 "Tarifs fixes et transparents",
                 "Chauffeur professionnel",
-                "Vehicule haut de gamme",
+                "Véhicule haut de gamme",
                 "Suivi des vols et trains",
-                "Accueil personnalise",
-                "Paiement securise",
+                "Accueil personnalisé",
+                "Paiement sécurisé",
                 "Disponible 24h/24",
-                "Annulation gratuite jusqu'a 2h avant",
+                "Annulation gratuite jusqu'à 2h avant",
               ].map((item) => (
                 <article
                   key={item}
@@ -174,7 +174,6 @@ export default async function TransferPage({ params }: { params: Params }) {
 
         <section className="bg-white px-6 pb-16 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">Texte SEO complet</h2>
             <div className="mt-8 space-y-6 text-base leading-8 text-slate-700">
               {transfer.seoParagraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
@@ -189,13 +188,13 @@ export default async function TransferPage({ params }: { params: Params }) {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Tarif</p>
               <h2 className="mt-3 text-2xl font-bold text-slate-900">Prix de ce trajet</h2>
               <p className="mt-5 text-5xl font-bold text-amber-600">{transfer.prix} EUR</p>
-              <p className="mt-3 text-slate-600">Tarif fixe annonce a la reservation.</p>
+              <p className="mt-3 text-slate-600">Tarif fixe annoncé à la réservation.</p>
             </article>
             <article className="rounded-3xl border border-amber-200 bg-white p-8 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Duree</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Durée</p>
               <h2 className="mt-3 text-2xl font-bold text-slate-900">Temps de trajet moyen</h2>
               <p className="mt-5 text-5xl font-bold text-amber-600">{transfer.temps}</p>
-              <p className="mt-3 text-slate-600">Distance moyenne: {transfer.distanceKm} km.</p>
+              <p className="mt-3 text-slate-600">Distance moyenne : {transfer.distanceKm} km.</p>
             </article>
           </div>
         </section>
@@ -225,7 +224,7 @@ export default async function TransferPage({ params }: { params: Params }) {
                   className="rounded-2xl border border-slate-200 bg-white p-5 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">
-                    {item.origin === "aeroport" ? "Aeroport" : "Gare"}
+                    {item.origin === "aeroport" ? "Aéroport" : "Gare"}
                   </p>
                   <p className="mt-2 text-lg font-semibold">
                     {item.depart} -&gt; {item.arrivee}

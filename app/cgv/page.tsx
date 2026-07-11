@@ -14,7 +14,7 @@ export default function CGVPage() {
         <p>
           Les présentes Conditions Générales de Vente régissent les prestations
           de transport privé proposées par MB Transport sous l'enseigne
-          Toulouse Tarn Transfer.
+          Toulouse Tarn Transfert.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-3">
