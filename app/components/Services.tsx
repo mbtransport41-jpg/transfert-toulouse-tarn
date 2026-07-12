@@ -61,20 +61,6 @@ const destinations = [
 export default function Services() {
   return (
     <section id="services" className="bg-black text-white">
-      <div className="mx-auto grid max-w-7xl divide-y divide-amber-500/30 md:grid-cols-4 md:divide-x md:divide-y-0">
-        {services.map((service, index) => (
-          <div
-            key={service.title}
-            className={`px-6 py-8 text-center md:px-8 ${index === 0 ? "md:pl-0" : ""}`}
-          >
-            <h3 className="text-lg font-semibold text-amber-400">{service.title}</h3>
-            <p className="mx-auto mt-3 max-w-xs text-sm leading-7 text-slate-300">
-              {service.description}
-            </p>
-          </div>
-        ))}
-      </div>
-
       <div className="mx-auto max-w-7xl px-6 pb-16 pt-10 sm:px-8 lg:px-10">
         <div className="mb-8 max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-amber-300">
@@ -126,6 +112,20 @@ export default function Services() {
             </article>
           ))}
         </div>
+      </div>
+
+      <div className="mx-auto grid max-w-7xl divide-y divide-amber-500/30 md:grid-cols-4 md:divide-x md:divide-y-0">
+        {services.map((service, index) => (
+          <div
+            key={service.title}
+            className={`px-6 py-8 text-center md:px-8 ${index === 0 ? "md:pl-0" : ""}`}
+          >
+            <h3 className="text-lg font-semibold text-amber-400">{service.title}</h3>
+            <p className="mx-auto mt-3 max-w-xs text-sm leading-7 text-slate-300">
+              {service.description}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
