@@ -75,22 +75,44 @@ const prix =
   }, [searchParams]);
 
 const handleStripePayment = async () => {
-  const response = await fetch("/api/create-checkout-session", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      prix,
-      email: formData.email,
-    }),
-  });
+  if (!formData.email) {
+    setStatus({ type: 'error', message: 'Veuillez renseigner votre adresse e-mail avant de payer.' });
+    return;
+  }
 
-  const data = await response.json();
+  if (prix <= 0) {
+    setStatus({ type: 'error', message: 'Veuillez sélectionner un trajet valide avant de payer.' });
+    return;
+  }
 
-if (data.url) {
-  window.location.href = data.url;
-}
+  setStatus({ type: 'loading', message: 'Redirection vers Stripe en cours...' });
+
+  try {
+    const response = await fetch('/api/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prix,
+        email: formData.email,
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data?.error || 'Impossible de créer la session de paiement Stripe.');
+    }
+
+    if (!data?.url) {
+      throw new Error('URL Stripe Checkout manquante.');
+    }
+
+    window.location.assign(data.url);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Erreur inconnue pendant le paiement.';
+    setStatus({ type: 'error', message });
+  }
 };
 
   const handleChange = (
@@ -312,24 +334,21 @@ if (data.url) {
           </div>
         ) : null}
 
-<button 
-type="button"
-onClick={handleStripePayment} 
-className="inline-flex items-center 
-justify-center rounded-full bg-green-600
-px-6 py-3 text-white font-semibold
-hover:bg-green-700 mb-4 w-full">
-  
-{prix > 0 && (
-  <div className="rounded-2xl bg-amber-50 border border-amber-200 p-4 text-center">
-    <p className="text-sm text-slate-600">Tarif du transfert</p>
-    <p className="text-3xl font-bold text-amber-600">
-      {prix} €
-    </p>
-  </div>
-)}
-    Payer maintenant
-</button>
+        {prix > 0 && (
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-center">
+            <p className="text-sm text-slate-600">Tarif du transfert</p>
+            <p className="text-3xl font-bold text-amber-600">{prix} €</p>
+          </div>
+        )}
+
+        <button
+          type="button"
+          onClick={handleStripePayment}
+          disabled={status.type === 'loading'}
+          className="mb-4 inline-flex w-full items-center justify-center rounded-full bg-green-600 px-6 py-3 font-semibold text-white hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-400"
+        >
+          {status.type === 'loading' ? 'Redirection en cours...' : 'Payer en ligne'}
+        </button>
 
         <button
           type="submit"
