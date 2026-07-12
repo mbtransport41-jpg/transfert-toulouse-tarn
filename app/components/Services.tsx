@@ -61,7 +61,7 @@ const destinations = [
 export default function Services() {
   return (
     <section id="services" className="bg-black text-white">
-      <div className="mx-auto max-w-7xl px-6 pb-16 pt-10 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl px-6 pb-16 pt-0 sm:px-8 lg:px-10">
         <div className="mb-8 max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-amber-300">
             Destinations premium
