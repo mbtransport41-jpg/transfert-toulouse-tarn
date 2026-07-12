@@ -23,17 +23,23 @@ export async function POST(req: Request) {
     );
   }
 
-  let body: { prix?: number | string };
+  let body: { prix?: number | string; email?: string };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "Payload JSON invalide." }, { status: 400 });
   }
 
-  const { prix } = body;
+  const { prix, email } = body;
   const amount = Number(prix);
+  const normalizedEmail = typeof email === "string" ? email.trim().toLowerCase() : "";
+
   if (!Number.isFinite(amount) || amount <= 0) {
     return NextResponse.json({ error: "Montant invalide." }, { status: 400 });
+  }
+
+  if (!normalizedEmail || !/^\S+@\S+\.\S+$/.test(normalizedEmail)) {
+    return NextResponse.json({ error: "Adresse e-mail invalide." }, { status: 400 });
   }
 
   let session;
@@ -41,6 +47,7 @@ export async function POST(req: Request) {
     session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
+      customer_email: normalizedEmail,
       line_items: [
         {
           price_data: {
@@ -53,6 +60,9 @@ export async function POST(req: Request) {
           quantity: 1,
         },
       ],
+      payment_intent_data: {
+        receipt_email: normalizedEmail,
+      },
       success_url: "https://www.transfert-toulouse-tarn.fr/success",
       cancel_url: "https://www.transfert-toulouse-tarn.fr/reservation",
     });

@@ -82,6 +82,7 @@ const handleStripePayment = async () => {
     },
     body: JSON.stringify({
       prix,
+      email: formData.email,
     }),
   });
 
