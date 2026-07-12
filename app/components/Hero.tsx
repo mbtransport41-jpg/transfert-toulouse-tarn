@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative isolate min-h-screen overflow-hidden bg-black text-white">
+    <section id="hero" className="relative isolate overflow-hidden bg-black text-white">
       <div
         className="absolute inset-0"
         style={{
@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,215,0,0.12),_transparent_35%)]" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-7xl items-center px-6 py-24 sm:px-8 lg:px-12">
+      <div className="relative mx-auto flex w-full max-w-7xl items-start px-6 pb-0 pt-20 sm:px-8 lg:px-12">
         <div className="max-w-2xl">
           <p className="text-lg font-semibold uppercase tracking-[0.35em] text-amber-300 sm:text-xl">
             CONFORT • PONCTUALITÉ • SÉRÉNITÉ
