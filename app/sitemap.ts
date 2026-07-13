@@ -14,6 +14,11 @@ const staticPaths = [
   "/mentions-legales",
   "/confidentialite",
   "/cgv",
+  "/transferts/castres",
+  "/transferts/albi",
+  "/transferts/lavaur",
+  "/transferts/revel",
+  "/transferts/mazamet",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
