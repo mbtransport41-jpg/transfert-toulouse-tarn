@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const siteName = "Toulouse Tarn Transfert";
-export const siteUrl = "https://toulouse-tarn-transfer.fr";
+export const siteUrl = "https://transfert-toulouse-tarn.fr";
 export const defaultSeoImage = "/Logo ttt 2.png";
 
 type BuildSeoMetadataOptions = {

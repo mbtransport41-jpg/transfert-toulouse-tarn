@@ -5,11 +5,9 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BookingForm from "@/app/components/BookingForm";
 import { getOtherTransfers, getTransferBySlug, transfers } from "@/app/data/transfert";
-import { buildSeoMetadata } from "@/app/lib/seo";
+import { buildSeoMetadata, siteUrl } from "@/app/lib/seo";
 
 type Params = Promise<{ slug: string }>;
-
-const siteUrl = "https://toulouse-tarn-transfer.fr";
 
 export async function generateStaticParams() {
   return transfers.map((transfer) => ({ slug: transfer.slug }));

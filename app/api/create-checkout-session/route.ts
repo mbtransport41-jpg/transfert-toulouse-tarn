@@ -63,8 +63,8 @@ export async function POST(req: Request) {
       payment_intent_data: {
         receipt_email: normalizedEmail,
       },
-      success_url: "https://www.transfert-toulouse-tarn.fr/success",
-      cancel_url: "https://www.transfert-toulouse-tarn.fr/reservation",
+      success_url: "https://transfert-toulouse-tarn.fr/success",
+      cancel_url: "https://transfert-toulouse-tarn.fr/reservation",
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Erreur Stripe inconnue.";
