@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildSeoMetadata } from "../lib/seo";
 import { transfers } from "@/app/data/transfert";
 
-export const metadata: Metadata = {
-  title: "Nos transferts | Toulouse Tarn Transfert",
+export const metadata: Metadata = buildSeoMetadata({
+  title: "Transferts Toulouse-Blagnac et Matabiau | Castres, Albi, Lavaur",
   description:
-    "Retrouvez toutes les destinations de transferts premium entre l'aéroport Toulouse-Blagnac, la gare Matabiau et les villes du Tarn.",
-  alternates: {
-    canonical: "/nos-transferts",
-  },
-};
+    "Retrouvez toutes nos liaisons de chauffeur privé entre Toulouse-Blagnac, la gare Matabiau et les villes du Tarn : Castres, Albi, Lavaur, Revel et Mazamet.",
+  path: "/nos-transferts",
+  keywords: [
+    "transfert aéroport Toulouse",
+    "transfert gare Matabiau",
+    "chauffeur privé Castres",
+    "chauffeur privé Albi",
+    "chauffeur privé Lavaur",
+    "chauffeur privé Revel",
+    "chauffeur privé Mazamet",
+    "chauffeur privé Toulouse",
+  ],
+});
 
 export default function NosTransfertsPage() {
   const airport = transfers.filter((item) => item.origin === "aeroport");

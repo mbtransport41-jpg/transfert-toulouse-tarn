@@ -1,4 +1,20 @@
 import Link from "next/link";
+import { buildSeoMetadata } from "../lib/seo";
+
+export const metadata = buildSeoMetadata({
+  title: "Contact chauffeur privé Toulouse | Réservation 7j/7",
+  description:
+    "Contactez Toulouse Tarn Transfert pour réserver votre chauffeur privé à Toulouse, organiser un transfert aéroport Toulouse-Blagnac, gare Matabiau ou un trajet vers Castres, Albi, Lavaur, Revel et Mazamet.",
+  path: "/contact",
+  keywords: [
+    "chauffeur privé Toulouse",
+    "réservation chauffeur privé",
+    "transfert aéroport Toulouse",
+    "transfert gare Matabiau",
+    "chauffeur privé Occitanie",
+    "transport premium",
+  ],
+});
 
 export default function ContactPage() {
   return (
@@ -6,7 +22,7 @@ export default function ContactPage() {
       <section className="max-w-6xl mx-auto px-6 py-20">
         <h1 className="text-5xl font-bold text-amber-400 mb-6">Contactez Toulouse Tarn Transfert</h1>
         <p className="text-xl text-gray-300 mb-12">
-          Besoin d'un chauffeur privé entre Toulouse, l'aéroport Toulouse-Blagnac, la gare Matabiau, Castres, Albi,
+          Besoin d&apos;un chauffeur privé entre Toulouse, l&apos;aéroport Toulouse-Blagnac, la gare Matabiau, Castres, Albi,
           Lavaur, Revel, Mazamet ou toute autre destination dans le Tarn ? Notre équipe est à votre disposition 7j/7
           sur réservation.
         </p>
@@ -45,7 +61,7 @@ export default function ContactPage() {
           <div className="bg-zinc-900 rounded-3xl border border-amber-500/30 p-8">
             <h2 className="text-3xl font-bold text-amber-400 mb-8">Demande de réservation</h2>
             <p className="text-gray-300 mb-8">
-              Pour toute demande de transfert privé, navette aéroport, transport gare ou mise à disposition d'un
+              Pour toute demande de transfert privé, navette aéroport, transport gare ou mise à disposition d&apos;un
               chauffeur privé, utilisez le formulaire de réservation disponible sur notre site.
             </p>
             <Link
@@ -64,7 +80,7 @@ export default function ContactPage() {
             <li>✓ Véhicule haut de gamme.</li>
             <li>✓ Tarifs fixes sans surprise.</li>
             <li>✓ Paiement sécurisé.</li>
-            <li>✓ Accueil personnalisé à l'aéroport et à la gare.</li>
+            <li>✓ Accueil personnalisé à l&apos;aéroport et à la gare.</li>
             <li>✓ Service bilingue français / anglais.</li>
             <li>✓ Réservation simple et rapide.</li>
           </ul>

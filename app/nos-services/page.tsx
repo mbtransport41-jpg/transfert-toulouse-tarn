@@ -1,8 +1,19 @@
-export const metadata = {
-  title: "Nos services | Chauffeur privé Toulouse Tarn Transfert",
+import { buildSeoMetadata } from "../lib/seo";
+
+export const metadata = buildSeoMetadata({
+  title: "Services chauffeur privé Toulouse | Aéroport, gare et Tarn",
   description:
-    "Chauffeur privé premium entre Toulouse, l'aéroport Toulouse-Blagnac, la gare Matabiau, Castres, Albi, Lavaur, Revel et Mazamet. Transferts privés, accueil bilingue français/anglais, réservation 24h/24.",
-};
+    "Découvrez nos services de chauffeur privé à Toulouse : transfert aéroport Toulouse-Blagnac, transfert gare Matabiau, transport premium vers Castres, Albi, Lavaur, Revel et Mazamet.",
+  path: "/nos-services",
+  keywords: [
+    "chauffeur privé Toulouse",
+    "VTC Toulouse",
+    "transfert aéroport Toulouse",
+    "transfert gare Matabiau",
+    "chauffeur privé Occitanie",
+    "transport premium",
+  ],
+});
 
 export default function NosServices() {
   return (
@@ -12,7 +23,7 @@ export default function NosServices() {
         <h1 className="mt-4 text-5xl font-bold">Nos services de chauffeur privé premium</h1>
         <p className="mt-8 text-slate-300 text-lg leading-8 max-w-4xl">
           Toulouse Tarn Transfert (TTT) vous accompagne pour tous vos déplacements privés et professionnels entre
-          Toulouse, Castres, Albi, Lavaur, Revel, Mazamet et l'ensemble du Tarn.
+          Toulouse, Castres, Albi, Lavaur, Revel, Mazamet et l&apos;ensemble du Tarn.
         </p>
         <p className="mt-6 text-slate-300 text-lg leading-8 max-w-4xl">
           Notre objectif est de proposer un service fiable, ponctuel, confortable et haut de gamme avec réservation
@@ -24,7 +35,7 @@ export default function NosServices() {
         <div className="rounded-3xl border border-amber-500/30 p-8 bg-zinc-900">
           <h2 className="text-2xl font-bold text-amber-400">Transferts Aéroport Toulouse-Blagnac</h2>
           <p className="mt-5 text-slate-300">
-            Transfert vers ou depuis l'aéroport Toulouse-Blagnac avec suivi des vols en temps réel.
+            Transfert vers ou depuis l&apos;aéroport Toulouse-Blagnac avec suivi des vols en temps réel.
           </p>
         </div>
 
@@ -36,13 +47,13 @@ export default function NosServices() {
         <div className="rounded-3xl border border-amber-500/30 p-8 bg-zinc-900">
           <h2 className="text-2xl font-bold text-amber-400">Chauffeur privé toutes distances</h2>
           <p className="mt-5 text-slate-300">
-            Déplacements privés, professionnels, rendez-vous d'affaires, événements et excursions.
+            Déplacements privés, professionnels, rendez-vous d&apos;affaires, événements et excursions.
           </p>
         </div>
 
         <div className="rounded-3xl border border-amber-500/30 p-8 bg-zinc-900">
           <h2 className="text-2xl font-bold text-amber-400">Accueil personnalisé</h2>
-          <p className="mt-5 text-slate-300">Accueil avec pancarte nominative dans les halls d'arrivée.</p>
+          <p className="mt-5 text-slate-300">Accueil avec pancarte nominative dans les halls d&apos;arrivée.</p>
         </div>
 
         <div className="rounded-3xl border border-amber-500/30 p-8 bg-zinc-900">

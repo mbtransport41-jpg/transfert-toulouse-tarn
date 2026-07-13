@@ -1,3 +1,19 @@
+import { buildSeoMetadata } from "../lib/seo";
+
+export const metadata = buildSeoMetadata({
+  title: "À propos de Toulouse Tarn Transfert | Chauffeur privé Occitanie",
+  description:
+    "Découvrez Toulouse Tarn Transfert, votre chauffeur privé en Occitanie pour les transferts Toulouse-Blagnac, gare Matabiau, Castres, Albi, Lavaur, Revel et Mazamet.",
+  path: "/a-propos",
+  keywords: [
+    "chauffeur privé Toulouse",
+    "chauffeur privé Occitanie",
+    "transport premium",
+    "réservation chauffeur privé",
+    "transfert aéroport Toulouse",
+  ],
+});
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-black text-white">
@@ -12,13 +28,13 @@ export default function AboutPage() {
         </p>
 
         <p className="mt-8 text-lg leading-9 text-slate-400">
-          Nous assurons des transferts premium depuis l'aéroport Toulouse-Blagnac, la gare Matabiau ainsi que tout
-          autre lieu de prise en charge vers Castres, Albi, Mazamet, Lavaur, Revel et l'ensemble de la région
+          Nous assurons des transferts premium depuis l&apos;aéroport Toulouse-Blagnac, la gare Matabiau ainsi que tout
+          autre lieu de prise en charge vers Castres, Albi, Mazamet, Lavaur, Revel et l&apos;ensemble de la région
           Occitanie.
         </p>
 
         <p className="mt-8 text-lg leading-9 text-slate-400">
-          Notre mission est d'offrir un service ponctuel, discret, confortable et personnalisé afin que chacun de vos
+          Notre mission est d&apos;offrir un service ponctuel, discret, confortable et personnalisé afin que chacun de vos
           trajets soit une expérience agréable.
         </p>
 
@@ -38,7 +54,7 @@ export default function AboutPage() {
           <div className="rounded-3xl border border-amber-500/30 p-8">
             <h2 className="text-2xl font-bold text-amber-400">Service bilingue</h2>
             <p className="mt-6 text-slate-300">
-              Nous accueillons notre clientèle en français et en anglais afin d'offrir une expérience de qualité aux
+              Nous accueillons notre clientèle en français et en anglais afin d&apos;offrir une expérience de qualité aux
               voyageurs internationaux.
             </p>
             <div className="mt-8 text-5xl"></div>

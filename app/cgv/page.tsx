@@ -1,3 +1,12 @@
+import { buildSeoMetadata } from "../lib/seo";
+
+export const metadata = buildSeoMetadata({
+  title: "Conditions générales de vente | Toulouse Tarn Transfert",
+  description:
+    "Consultez les conditions générales de vente applicables à nos prestations de chauffeur privé, transferts aéroport et trajets sur réservation.",
+  path: "/cgv",
+});
+
 export default function CGVPage() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white px-6 py-20">
@@ -13,7 +22,7 @@ export default function CGVPage() {
 
         <p>
           Les présentes Conditions Générales de Vente régissent les prestations
-          de transport privé proposées par MB Transport sous l'enseigne
+          de transport privé proposées par MB Transport sous l&apos;enseigne
           Toulouse Tarn Transfert.
         </p>
 
@@ -22,7 +31,7 @@ export default function CGVPage() {
         </h2>
 
         <p>
-          Toute réservation doit être effectuée à l'avance par téléphone,
+          Toute réservation doit être effectuée à l&apos;avance par téléphone,
           e-mail ou via le site internet.
         </p>
 
@@ -32,7 +41,7 @@ export default function CGVPage() {
 
         <p>
           Les tarifs sont communiqués avant la réservation et peuvent varier
-          selon la distance, l'heure, les péages et les demandes particulières.
+          selon la distance, l&apos;heure, les péages et les demandes particulières.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-3">
@@ -50,7 +59,7 @@ export default function CGVPage() {
 
         <p>
           Toute annulation doit être signalée dès que possible. Des frais
-          peuvent être appliqués en cas d'annulation tardive.
+          peuvent être appliqués en cas d&apos;annulation tardive.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-3">
@@ -58,9 +67,9 @@ export default function CGVPage() {
         </h2>
 
         <p>
-          MB Transport s'engage à assurer les prestations avec ponctualité,
+          MB Transport s&apos;engage à assurer les prestations avec ponctualité,
           professionnalisme et sécurité. La responsabilité ne pourra être
-          engagée en cas de force majeure ou d'événement indépendant de sa
+          engagée en cas de force majeure ou d&apos;événement indépendant de sa
           volonté.
         </p>
 

@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BookingForm from "@/app/components/BookingForm";
 import { getOtherTransfers, getTransferBySlug, transfers } from "@/app/data/transfert";
+import { buildSeoMetadata } from "@/app/lib/seo";
 
 type Params = Promise<{ slug: string }>;
 
@@ -19,36 +20,21 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const transfer = getTransferBySlug(slug);
 
   if (!transfer) {
-    return {
+    return buildSeoMetadata({
       title: "Trajet introuvable | Toulouse Tarn Transfert",
       description: "Cette page de transfert n'existe pas.",
-    };
+      path: "/transfert/introuvable",
+    });
   }
 
-  const pageUrl = `${siteUrl}/transfert/${transfer.slug}`;
-
-  return {
+  return buildSeoMetadata({
     title: transfer.title,
     description: transfer.metaDescription,
+    path: `/transfert/${transfer.slug}`,
     keywords: transfer.keywords,
-    alternates: {
-      canonical: pageUrl,
-    },
-    openGraph: {
-      title: transfer.title,
-      description: transfer.metaDescription,
-      url: pageUrl,
-      type: "website",
-      images: [
-        {
-          url: transfer.image,
-          width: 1200,
-          height: 630,
-          alt: `${transfer.depart} vers ${transfer.arrivee}`,
-        },
-      ],
-    },
-  };
+    image: transfer.image,
+    imageAlt: `${transfer.depart} vers ${transfer.arrivee}`,
+  });
 }
 
 function buildServiceSchema(slug: string) {

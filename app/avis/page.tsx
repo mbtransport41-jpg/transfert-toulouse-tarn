@@ -1,9 +1,11 @@
 import Script from "next/script";
+import { buildSeoMetadata } from "../lib/seo";
 
-export const metadata = {
-  title: "Avis clients | Toulouse Tarn Transfert - Chauffeur privé Toulouse",
+export const metadata = buildSeoMetadata({
+  title: "Avis chauffeur privé Toulouse | Service premium recommandé",
   description:
-    "Consultez les avis de nos clients sur Toulouse Tarn Transfert. Chauffeur privé premium entre Toulouse, Castres, Albi, Lavaur, Revel, Mazamet, l'aéroport Toulouse-Blagnac et toute l'Occitanie.",
+    "Découvrez les avis clients sur notre chauffeur privé à Toulouse, nos transferts aéroport Toulouse-Blagnac, gare Matabiau et nos trajets vers Castres, Albi, Lavaur, Revel et Mazamet.",
+  path: "/avis",
   keywords: [
     "avis chauffeur privé Toulouse",
     "avis VTC Toulouse",
@@ -13,11 +15,10 @@ export const metadata = {
     "chauffeur privé Revel",
     "chauffeur privé Mazamet",
     "transfert aéroport Toulouse",
-    "Toulouse Tarn Transfert",
-    "VTC Tarn",
     "chauffeur privé Occitanie",
+    "transport premium",
   ],
-};
+});
 
 export default function AvisPage() {
   const schema = {
@@ -50,8 +51,8 @@ export default function AvisPage() {
           <h1 className="mt-6 text-5xl md:text-6xl font-bold">Avis de nos clients</h1>
           <p className="mt-8 max-w-3xl text-xl text-slate-300 leading-8">
             Découvrez les témoignages de nos passagers ayant choisi Toulouse Tarn Transfert pour leurs transferts
-            privés entre Toulouse, Castres, Albi, Lavaur, Revel, Mazamet, l'aéroport Toulouse-Blagnac, les gares et
-            toute l'Occitanie.
+            privés entre Toulouse, Castres, Albi, Lavaur, Revel, Mazamet, l&apos;aéroport Toulouse-Blagnac, les gares et
+            toute l&apos;Occitanie.
           </p>
         </section>
 
@@ -74,7 +75,7 @@ export default function AvisPage() {
             <div className="rounded-3xl bg-zinc-900 border border-zinc-800 p-8">
               <h2 className="text-xl font-semibold text-amber-300">Véhicule premium</h2>
               <p className="mt-4 text-slate-300">
-                Berline confortable, climatisation, chargeurs téléphone, bouteille d'eau et intérieur impeccable.
+                Berline confortable, climatisation, chargeurs téléphone, bouteille d&apos;eau et intérieur impeccable.
               </p>
             </div>
 
@@ -94,7 +95,7 @@ export default function AvisPage() {
             <div className="rounded-2xl bg-zinc-900 p-6 border border-zinc-800">⭐ Chauffeur professionnel et discret</div>
             <div className="rounded-2xl bg-zinc-900 p-6 border border-zinc-800">🚘 Véhicule haut de gamme parfaitement entretenu</div>
             <div className="rounded-2xl bg-zinc-900 p-6 border border-zinc-800">✈️ Suivi des vols et des trains en temps réel</div>
-            <div className="rounded-2xl bg-zinc-900 p-6 border border-zinc-800">📍 Transferts dans tout le Tarn et l'Occitanie</div>
+            <div className="rounded-2xl bg-zinc-900 p-6 border border-zinc-800">📍 Transferts dans tout le Tarn et l&apos;Occitanie</div>
             <div className="rounded-2xl bg-zinc-900 p-6 border border-zinc-800">💳 Paiement sécurisé</div>
             <div className="rounded-2xl bg-zinc-900 p-6 border border-zinc-800">🕒 Disponibilité sur réservation 7j/7</div>
           </div>
@@ -102,7 +103,7 @@ export default function AvisPage() {
 
         <section className="mx-auto max-w-7xl px-6 pb-24">
           <h2 className="text-4xl font-bold text-white">Les derniers avis de nos clients</h2>
-          <p className="mt-4 text-slate-400">Chaque avis est laissé par un client ayant utilisé Toulouse Tarn Transfert.</p>
+            <p className="mt-4 text-slate-400">Chaque avis est laissé par un client ayant utilisé Toulouse Tarn Transfert.</p>
 
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
             <article className="rounded-3xl bg-zinc-900 border border-zinc-800 p-8">
@@ -132,7 +133,7 @@ export default function AvisPage() {
             <h2 className="text-4xl font-bold text-white">Déposer votre avis</h2>
 
             <p className="mt-4 text-slate-400">
-              Votre retour nous permet d'améliorer continuellement la qualité de nos services.
+              Votre retour nous permet d&apos;améliorer continuellement la qualité de nos services.
             </p>
 
             <form className="mt-10 space-y-6">

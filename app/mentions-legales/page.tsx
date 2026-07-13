@@ -1,7 +1,11 @@
-export const metadata = {
+import { buildSeoMetadata } from "../lib/seo";
+
+export const metadata = buildSeoMetadata({
   title: "Mentions légales | Toulouse Tarn Transfert",
-  description: "Mentions légales du site Toulouse Tarn Transfert.",
-};
+  description:
+    "Consultez les mentions légales du site Toulouse Tarn Transfert et les informations relatives à l'éditeur, à l'hébergement et au contact.",
+  path: "/mentions-legales",
+});
 
 export default function MentionsLegalesPage() {
   return (
@@ -39,7 +43,7 @@ export default function MentionsLegalesPage() {
           <div>
             <h2 className="text-2xl font-bold text-amber-400">Propriété intellectuelle</h2>
             <p className="mt-4 text-slate-300 leading-8">
-              L'ensemble des contenus présents sur ce site (textes, images, photographies, logos, graphismes et
+              L&apos;ensemble des contenus présents sur ce site (textes, images, photographies, logos, graphismes et
               éléments visuels) est protégé par le Code de la propriété intellectuelle. Toute reproduction,
               représentation ou diffusion, totale ou partielle, sans autorisation écrite préalable est interdite.
             </p>
@@ -57,7 +61,7 @@ export default function MentionsLegalesPage() {
             <h2 className="text-2xl font-bold text-amber-400">Cookies</h2>
             <p className="mt-4 text-slate-300 leading-8">
               Ce site peut utiliser des cookies nécessaires à son bon fonctionnement ainsi que des outils de mesure
-              d'audience.
+              d&apos;audience.
             </p>
           </div>
 

@@ -1,10 +1,21 @@
 import Link from "next/link";
+import { buildSeoMetadata } from "../lib/seo";
 
-export const metadata = {
-  title: "Tarifs VTC Toulouse, Castres, Albi | Tarn Transfert",
+export const metadata = buildSeoMetadata({
+  title: "Tarifs chauffeur privé Toulouse | Prix fixes et devis rapide",
   description:
-    "Découvrez les tarifs de Tarn Transfert pour vos transferts privés, navettes aéroport Toulouse-Blagnac, gare Matabiau et déplacements dans tout le Tarn.",
-};
+    "Consultez les tarifs de votre chauffeur privé à Toulouse pour l'aéroport Toulouse-Blagnac, la gare Matabiau et les villes du Tarn. Prix fixes, devis rapide et transport premium.",
+  path: "/tarifs",
+  keywords: [
+    "chauffeur privé Toulouse",
+    "VTC Toulouse",
+    "tarifs VTC Toulouse",
+    "transfert aéroport Toulouse",
+    "transfert gare Matabiau",
+    "transport premium",
+    "réservation chauffeur privé",
+  ],
+});
 
 export default function TarifsPage() {
   return (
@@ -13,8 +24,8 @@ export default function TarifsPage() {
         <p className="text-amber-400 uppercase tracking-[0.3em] text-sm">Tarifs</p>
         <h1 className="mt-4 text-5xl font-bold">Tarifs de nos transferts privés</h1>
         <p className="mt-6 text-gray-300 text-lg leading-8">
-          Tarn Transfert propose des tarifs transparents pour tous vos déplacements privés, transferts vers l'aéroport
-          Toulouse-Blagnac, la gare Matabiau, Castres, Albi, Lavaur, Revel, Mazamet et toute l'Occitanie.
+          Tarn Transfert propose des tarifs transparents pour tous vos déplacements privés, transferts vers l&apos;aéroport
+          Toulouse-Blagnac, la gare Matabiau, Castres, Albi, Lavaur, Revel, Mazamet et toute l&apos;Occitanie.
         </p>
       </section>
 
