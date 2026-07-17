@@ -54,6 +54,21 @@ const tarifs: Record<string, number> = {
 
   "Aéroport Toulouse-Blagnac|Revel": 109,
   "Gare Toulouse-Matabiau|Revel": 99,
+
+  "Aéroport Toulouse-Blagnac|Saint-Ferréol": 119,
+  "Gare Toulouse-Matabiau|Saint-Ferréol": 109,
+
+  "Aéroport Toulouse-Blagnac|Castelnaudary": 109,
+  "Gare Toulouse-Matabiau|Castelnaudary": 99,
+
+  "Aéroport Toulouse-Blagnac|Montauban": 99,
+  "Gare Toulouse-Matabiau|Montauban": 89,
+
+  "Aéroport Toulouse-Blagnac|Moissac": 109,
+  "Gare Toulouse-Matabiau|Moissac": 99,
+
+  "Aéroport Toulouse-Blagnac|Castelsarrasin": 109,
+  "Gare Toulouse-Matabiau|Castelsarrasin": 99,
 };
 
 const prix =
@@ -286,6 +301,11 @@ const handleStripePayment = async () => {
   <option value="Mazamet">Mazamet</option>
   <option value="Lavaur">Lavaur</option>
   <option value="Revel">Revel</option>
+  <option value="Saint-Ferréol">Saint-Ferréol</option>
+  <option value="Castelnaudary">Castelnaudary</option>
+  <option value="Montauban">Montauban</option>
+  <option value="Moissac">Moissac</option>
+  <option value="Castelsarrasin">Castelsarrasin</option>
 </select>
           </div>
 

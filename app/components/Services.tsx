@@ -56,6 +56,41 @@ const destinations = [
     image: "/revel.png",
     prices: ["Aéroport dès 109 €", "Gare dès 99 €"],
   },
+  {
+    name: "Saint-Ferréol",
+    airportSlug: "aeroport-toulouse-saint-ferreol",
+    stationSlug: "gare-matabiau-saint-ferreol",
+    image: "/St-ferriol.png",
+    prices: ["Aéroport dès 119 €", "Gare dès 109 €"],
+  },
+  {
+    name: "Castelnaudary",
+    airportSlug: "aeroport-toulouse-castelnaudary",
+    stationSlug: "gare-matabiau-castelnaudary",
+    image: "/Castelnaudary 2.png",
+    prices: ["Aéroport dès 109 €", "Gare dès 99 €"],
+  },
+  {
+    name: "Montauban",
+    airportSlug: "aeroport-toulouse-montauban",
+    stationSlug: "gare-matabiau-montauban",
+    image: "/Montauban.png",
+    prices: ["Aéroport dès 99 €", "Gare dès 89 €"],
+  },
+  {
+    name: "Moissac",
+    airportSlug: "aeroport-toulouse-moissac",
+    stationSlug: "gare-matabiau-moissac",
+    image: "/Moissac.png",
+    prices: ["Aéroport dès 109 €", "Gare dès 99 €"],
+  },
+  {
+    name: "Castelsarrasin",
+    airportSlug: "aeroport-toulouse-castelsarrasin",
+    stationSlug: "gare-matabiau-castelsarrasin",
+    image: "/Castelsarasin.png",
+    prices: ["Aéroport dès 109 €", "Gare dès 99 €"],
+  },
 ];
 
 export default function Services() {

@@ -28,4 +28,34 @@ export const tarifs = {
 
   "Gare Toulouse Matabiau|Revel": 99,
   "Revel|Gare Toulouse Matabiau": 99,
+
+  "Aéroport Toulouse-Blagnac|Saint-Ferréol": 119,
+  "Saint-Ferréol|Aéroport Toulouse-Blagnac": 119,
+
+  "Gare Toulouse Matabiau|Saint-Ferréol": 109,
+  "Saint-Ferréol|Gare Toulouse Matabiau": 109,
+
+  "Aéroport Toulouse-Blagnac|Castelnaudary": 109,
+  "Castelnaudary|Aéroport Toulouse-Blagnac": 109,
+
+  "Gare Toulouse Matabiau|Castelnaudary": 99,
+  "Castelnaudary|Gare Toulouse Matabiau": 99,
+
+  "Aéroport Toulouse-Blagnac|Montauban": 99,
+  "Montauban|Aéroport Toulouse-Blagnac": 99,
+
+  "Gare Toulouse Matabiau|Montauban": 89,
+  "Montauban|Gare Toulouse Matabiau": 89,
+
+  "Aéroport Toulouse-Blagnac|Moissac": 109,
+  "Moissac|Aéroport Toulouse-Blagnac": 109,
+
+  "Gare Toulouse Matabiau|Moissac": 99,
+  "Moissac|Gare Toulouse Matabiau": 99,
+
+  "Aéroport Toulouse-Blagnac|Castelsarrasin": 109,
+  "Castelsarrasin|Aéroport Toulouse-Blagnac": 109,
+
+  "Gare Toulouse Matabiau|Castelsarrasin": 99,
+  "Castelsarrasin|Gare Toulouse Matabiau": 99,
 };

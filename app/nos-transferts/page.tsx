@@ -4,9 +4,9 @@ import { buildSeoMetadata } from "../lib/seo";
 import { transfers } from "@/app/data/transfert";
 
 export const metadata: Metadata = buildSeoMetadata({
-  title: "Transferts Toulouse-Blagnac et Matabiau | Castres, Albi, Lavaur",
+  title: "Nos transferts | Chauffeur privé Toulouse-Blagnac et Matabiau vers 10 destinations",
   description:
-    "Retrouvez toutes nos liaisons de chauffeur privé entre Toulouse-Blagnac, la gare Matabiau et les villes du Tarn : Castres, Albi, Lavaur, Revel et Mazamet.",
+    "Découvrez la liste complète des transferts privés depuis Toulouse-Blagnac et la gare Matabiau vers Castres, Albi, Lavaur, Revel, Mazamet, Saint-Ferréol, Castelnaudary, Montauban, Moissac et Castelsarrasin.",
   path: "/nos-transferts",
   keywords: [
     "transfert aéroport Toulouse",
@@ -23,6 +23,7 @@ export const metadata: Metadata = buildSeoMetadata({
 export default function NosTransfertsPage() {
   const airport = transfers.filter((item) => item.origin === "aeroport");
   const station = transfers.filter((item) => item.origin === "gare");
+  const totalTransfers = transfers.length;
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -30,8 +31,9 @@ export default function NosTransfertsPage() {
         <p className="text-sm font-semibold uppercase tracking-[0.35em] text-amber-300">Nos transferts</p>
         <h1 className="mt-4 text-4xl font-bold sm:text-5xl">Toutes les destinations disponibles</h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-          Consultez toutes les liaisons privées proposées par Toulouse Tarn Transfert pour vos trajets vers Castres,
-          Albi, Lavaur, Revel et Mazamet.
+          Consultez la liste complète des {totalTransfers} liaisons privées proposées par Toulouse Tarn Transfert pour
+          vos trajets vers Castres, Albi, Lavaur, Revel, Mazamet, Saint-Ferréol, Castelnaudary, Montauban, Moissac et
+          Castelsarrasin.
         </p>
       </section>
 

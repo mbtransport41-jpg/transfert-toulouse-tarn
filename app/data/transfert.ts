@@ -8,7 +8,17 @@ export type Transfer = {
   slug: string;
   origin: "aeroport" | "gare";
   depart: string;
-  arrivee: "Castres" | "Albi" | "Lavaur" | "Revel" | "Mazamet";
+  arrivee:
+    | "Castres"
+    | "Albi"
+    | "Lavaur"
+    | "Revel"
+    | "Mazamet"
+    | "Saint-Ferréol"
+    | "Castelnaudary"
+    | "Montauban"
+    | "Moissac"
+    | "Castelsarrasin";
   prix: number;
   temps: string;
   distanceKm: number;
@@ -190,6 +200,126 @@ const baseTransfers: Omit<Transfer, "seoParagraphs" | "faq">[] = [
       "Rejoignez Mazamet depuis l'aéroport Toulouse-Blagnac avec une prestation premium : véhicule confortable, chauffeur discret et organisation fiable.",
   },
   {
+    id: "airport-saint-ferreol",
+    slug: "aeroport-toulouse-saint-ferreol",
+    origin: "aeroport",
+    depart: airport,
+    arrivee: "Saint-Ferréol",
+    prix: 119,
+    temps: "1h05",
+    distanceKm: 68,
+    image: "/St-ferriol.png",
+    title: "Chauffeur privé Saint-Ferréol depuis Toulouse-Blagnac | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Saint-Ferréol depuis l'aéroport Toulouse-Blagnac. Tarif fixe 119 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Saint-Ferréol",
+      "transfert aéroport Toulouse",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur aéroport Toulouse",
+    ],
+    intro:
+      "Rejoignez Saint-Ferréol depuis l'aéroport Toulouse-Blagnac avec un service premium, un chauffeur ponctuel et un tarif fixe transparent.",
+  },
+  {
+    id: "airport-castelnaudary",
+    slug: "aeroport-toulouse-castelnaudary",
+    origin: "aeroport",
+    depart: airport,
+    arrivee: "Castelnaudary",
+    prix: 109,
+    temps: "55 min",
+    distanceKm: 63,
+    image: "/Castelnaudary 2.png",
+    title: "Chauffeur privé Castelnaudary depuis Toulouse-Blagnac | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Castelnaudary depuis l'aéroport Toulouse-Blagnac. Tarif fixe 109 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Castelnaudary",
+      "transfert aéroport Toulouse",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur aéroport Toulouse",
+    ],
+    intro:
+      "Toulouse Tarn Transfert assure votre liaison vers Castelnaudary depuis l'aéroport Toulouse-Blagnac avec confort premium et prise en charge fiable.",
+  },
+  {
+    id: "airport-montauban",
+    slug: "aeroport-toulouse-montauban",
+    origin: "aeroport",
+    depart: airport,
+    arrivee: "Montauban",
+    prix: 99,
+    temps: "45 min",
+    distanceKm: 58,
+    image: "/Montauban.png",
+    title: "Chauffeur privé Montauban depuis Toulouse-Blagnac | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Montauban depuis l'aéroport Toulouse-Blagnac. Tarif fixe 99 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Montauban",
+      "transfert aéroport Toulouse",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur aéroport Toulouse",
+    ],
+    intro:
+      "Depuis l'aéroport Toulouse-Blagnac, voyagez vers Montauban avec un chauffeur privé premium, ponctuel et orienté confort.",
+  },
+  {
+    id: "airport-moissac",
+    slug: "aeroport-toulouse-moissac",
+    origin: "aeroport",
+    depart: airport,
+    arrivee: "Moissac",
+    prix: 109,
+    temps: "1h",
+    distanceKm: 76,
+    image: "/Moissac.png",
+    title: "Chauffeur privé Moissac depuis Toulouse-Blagnac | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Moissac depuis l'aéroport Toulouse-Blagnac. Tarif fixe 109 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Moissac",
+      "transfert aéroport Toulouse",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur aéroport Toulouse",
+    ],
+    intro:
+      "Toulouse Tarn Transfert vous accompagne vers Moissac depuis Toulouse-Blagnac avec une prestation premium, fluide et sécurisée.",
+  },
+  {
+    id: "airport-castelsarrasin",
+    slug: "aeroport-toulouse-castelsarrasin",
+    origin: "aeroport",
+    depart: airport,
+    arrivee: "Castelsarrasin",
+    prix: 109,
+    temps: "55 min",
+    distanceKm: 72,
+    image: "/Castelsarasin.png",
+    title: "Chauffeur privé Castelsarrasin depuis Toulouse-Blagnac | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Castelsarrasin depuis l'aéroport Toulouse-Blagnac. Tarif fixe 109 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Castelsarrasin",
+      "transfert aéroport Toulouse",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur aéroport Toulouse",
+    ],
+    intro:
+      "Pour Castelsarrasin, profitez d'un transfert premium depuis l'aéroport Toulouse-Blagnac avec un chauffeur privé et un tarif fixe.",
+  },
+  {
     id: "station-castres",
     slug: "gare-matabiau-castres",
     origin: "gare",
@@ -308,6 +438,126 @@ const baseTransfers: Omit<Transfer, "seoParagraphs" | "faq">[] = [
     ],
     intro:
       "Rejoignez Mazamet depuis la gare Toulouse-Matabiau avec une solution premium orientée ponctualité, confort et sérénité.",
+  },
+  {
+    id: "station-saint-ferreol",
+    slug: "gare-matabiau-saint-ferreol",
+    origin: "gare",
+    depart: station,
+    arrivee: "Saint-Ferréol",
+    prix: 109,
+    temps: "1h",
+    distanceKm: 64,
+    image: "/St-ferriol.png",
+    title: "Chauffeur privé Saint-Ferréol depuis la gare Matabiau | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Saint-Ferréol depuis la gare Matabiau. Tarif fixe 109 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Saint-Ferréol",
+      "transfert gare Matabiau",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur gare Toulouse",
+    ],
+    intro:
+      "Depuis la gare Toulouse-Matabiau, rejoignez Saint-Ferréol avec un chauffeur privé premium et une organisation sans stress.",
+  },
+  {
+    id: "station-castelnaudary",
+    slug: "gare-matabiau-castelnaudary",
+    origin: "gare",
+    depart: station,
+    arrivee: "Castelnaudary",
+    prix: 99,
+    temps: "50 min",
+    distanceKm: 58,
+    image: "/Castelnaudary 2.png",
+    title: "Chauffeur privé Castelnaudary depuis la gare Matabiau | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Castelnaudary depuis la gare Matabiau. Tarif fixe 99 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Castelnaudary",
+      "transfert gare Matabiau",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur gare Toulouse",
+    ],
+    intro:
+      "Toulouse Tarn Transfert assure votre transfert vers Castelnaudary depuis la gare Matabiau avec ponctualité et confort premium.",
+  },
+  {
+    id: "station-montauban",
+    slug: "gare-matabiau-montauban",
+    origin: "gare",
+    depart: station,
+    arrivee: "Montauban",
+    prix: 89,
+    temps: "40 min",
+    distanceKm: 50,
+    image: "/Montauban.png",
+    title: "Chauffeur privé Montauban depuis la gare Matabiau | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Montauban depuis la gare Matabiau. Tarif fixe 89 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Montauban",
+      "transfert gare Matabiau",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur gare Toulouse",
+    ],
+    intro:
+      "Depuis la gare Toulouse-Matabiau, voyagez vers Montauban avec un service chauffeur privé premium, fiable et confortable.",
+  },
+  {
+    id: "station-moissac",
+    slug: "gare-matabiau-moissac",
+    origin: "gare",
+    depart: station,
+    arrivee: "Moissac",
+    prix: 99,
+    temps: "55 min",
+    distanceKm: 70,
+    image: "/Moissac.png",
+    title: "Chauffeur privé Moissac depuis la gare Matabiau | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Moissac depuis la gare Matabiau. Tarif fixe 99 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Moissac",
+      "transfert gare Matabiau",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur gare Toulouse",
+    ],
+    intro:
+      "Toulouse Tarn Transfert vous conduit vers Moissac depuis la gare Matabiau avec un niveau de service premium constant.",
+  },
+  {
+    id: "station-castelsarrasin",
+    slug: "gare-matabiau-castelsarrasin",
+    origin: "gare",
+    depart: station,
+    arrivee: "Castelsarrasin",
+    prix: 99,
+    temps: "50 min",
+    distanceKm: 66,
+    image: "/Castelsarasin.png",
+    title: "Chauffeur privé Castelsarrasin depuis la gare Matabiau | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Castelsarrasin depuis la gare Matabiau. Tarif fixe 99 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Castelsarrasin",
+      "transfert gare Matabiau",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Occitanie",
+      "chauffeur gare Toulouse",
+    ],
+    intro:
+      "Rejoignez Castelsarrasin depuis la gare Toulouse-Matabiau avec un chauffeur privé premium, ponctuel et discret.",
   },
 ];
 

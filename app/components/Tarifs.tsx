@@ -9,7 +9,7 @@ export default function Tarifs() {
       <div className="mt-10">
 
         <p>Castres → Toulouse</p>
-        <p className="text-yellow-500 text-2xl">à partir de 120 €</p>
+        <p className="text-yellow-500 text-2xl">à partir de 119 €</p>
 
         <br />
 
