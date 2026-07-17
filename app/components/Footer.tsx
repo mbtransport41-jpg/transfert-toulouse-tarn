@@ -39,6 +39,7 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-amber-400">Informations</h3>
             <ul className="mt-5 space-y-3">
+              <li><Link href="/conditions-generales-de-vente">Conditions Générales de Vente</Link></li>
               <li><Link href="/cgv">Conditions générales</Link></li>
               <li><Link href="/mentions-legales">Mentions légales</Link></li>
               <li><Link href="/confidentialite">Politique de confidentialité</Link></li>

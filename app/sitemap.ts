@@ -14,6 +14,7 @@ const staticPaths = [
   "/mentions-legales",
   "/confidentialite",
   "/cgv",
+  "/conditions-generales-de-vente",
   "/transferts/castres",
   "/transferts/albi",
   "/transferts/lavaur",
