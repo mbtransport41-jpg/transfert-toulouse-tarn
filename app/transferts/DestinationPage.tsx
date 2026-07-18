@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getOtherTransfers, getTransferBySlug } from "@/app/data/transfert";
+import { getTransferBySlug } from "@/app/data/transfert";
 import { siteUrl } from "@/app/lib/seo";
 import {
-  destinationPageSlugs,
   getDestinationPageConfig,
   type DestinationSlug,
 } from "./destination-page-data";
@@ -143,7 +142,7 @@ export default function DestinationPage({ slug }: { slug: DestinationSlug }) {
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Aéroport</p>
                 <h3 className="mt-3 text-2xl font-bold text-slate-900">{airportTransfer.depart} -&gt; {config.city}</h3>
                 <p className="mt-3 text-slate-700">
-                  Tarif fixe de {airportTransfer.prix} EUR, durée moyenne {airportTransfer.temps} et distance d'environ {airportTransfer.distanceKm} km.
+                  Tarif fixe de {airportTransfer.prix} EUR, durée moyenne {airportTransfer.temps} et distance d&apos;environ {airportTransfer.distanceKm} km.
                 </p>
                 <p className="mt-4 text-sm font-semibold text-amber-700">Voir la page de réservation dédiée</p>
               </Link>
@@ -157,7 +156,7 @@ export default function DestinationPage({ slug }: { slug: DestinationSlug }) {
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Gare</p>
                 <h3 className="mt-3 text-2xl font-bold text-slate-900">{stationTransfer.depart} -&gt; {config.city}</h3>
                 <p className="mt-3 text-slate-700">
-                  Tarif fixe de {stationTransfer.prix} EUR, durée moyenne {stationTransfer.temps} et distance d'environ {stationTransfer.distanceKm} km.
+                  Tarif fixe de {stationTransfer.prix} EUR, durée moyenne {stationTransfer.temps} et distance d&apos;environ {stationTransfer.distanceKm} km.
                 </p>
                 <p className="mt-4 text-sm font-semibold text-amber-700">Voir la page de réservation dédiée</p>
               </Link>

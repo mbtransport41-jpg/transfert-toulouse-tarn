@@ -9,7 +9,7 @@ export default function Footer() {
             <h2 className="text-3xl font-bold text-amber-400">TTT</h2>
             <p className="mt-5 leading-8 text-slate-400">
               Toulouse Tarn Transfert est votre chauffeur privé premium entre Toulouse, Castres, Albi, Lavaur, Revel,
-              Mazamet, l'aéroport Toulouse-Blagnac, la gare Matabiau et toute l'Occitanie.
+              Mazamet, l&apos;aéroport Toulouse-Blagnac, la gare Matabiau et toute l&apos;Occitanie.
             </p>
           </div>
 

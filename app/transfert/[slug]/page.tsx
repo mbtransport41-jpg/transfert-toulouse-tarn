@@ -121,7 +121,7 @@ export default async function TransferPage({ params }: { params: Params }) {
               <span className="rounded-full bg-white px-4 py-2">Distance : {transfer.distanceKm} km</span>
             </div>
             <Link
-              href={`/#booking?destination=${encodeURIComponent(transfer.arrivee)}`}
+              href={`/#booking?pickup=${encodeURIComponent(transfer.depart)}&destination=${encodeURIComponent(transfer.arrivee)}`}
               className="mt-8 inline-flex rounded-full bg-amber-500 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-amber-400"
             >
               Réserver

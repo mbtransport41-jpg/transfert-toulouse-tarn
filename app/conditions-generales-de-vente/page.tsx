@@ -72,23 +72,23 @@ export default function ConditionsGeneralesDeVentePage() {
           <div>
             <h2 className="text-2xl font-semibold text-amber-300">5. Attente</h2>
             <p className="mt-3 leading-8">
-              Une période d'attente raisonnable est incluse lors de la prise en charge.
+              Une période d&apos;attente raisonnable est incluse lors de la prise en charge.
             </p>
             <p className="mt-2 leading-8">
-              Au-delà, des frais d'attente peuvent être appliqués après information du client.
+              Au-delà, des frais d&apos;attente peuvent être appliqués après information du client.
             </p>
           </div>
 
           <div>
             <h2 className="text-2xl font-semibold text-amber-300">6. Annulation</h2>
             <p className="mt-3 leading-8">
-              Les conditions d'annulation sont précisées dans la Politique d'annulation ci-dessous.
+              Les conditions d&apos;annulation sont précisées dans la Politique d&apos;annulation ci-dessous.
             </p>
           </div>
 
           <div>
             <h2 className="text-2xl font-semibold text-amber-300">7. Obligations du client</h2>
-            <p className="mt-3 leading-8">Le client s'engage à :</p>
+            <p className="mt-3 leading-8">Le client s&apos;engage à :</p>
             <ul className="mt-3 list-disc space-y-2 pl-6 leading-8 text-slate-200">
               <li>communiquer des informations exactes lors de la réservation ;</li>
               <li>respecter le chauffeur et le véhicule ;</li>
@@ -96,7 +96,7 @@ export default function ConditionsGeneralesDeVentePage() {
               <li>ne pas transporter de produits ou objets interdits par la loi.</li>
             </ul>
             <p className="mt-3 leading-8">
-              Tout comportement mettant en danger la sécurité pourra entraîner l'interruption immédiate de la
+              Tout comportement mettant en danger la sécurité pourra entraîner l&apos;interruption immédiate de la
               prestation sans remboursement.
             </p>
           </div>
@@ -136,7 +136,7 @@ export default function ConditionsGeneralesDeVentePage() {
             <h2 className="text-2xl font-semibold text-amber-300">10. Responsabilité</h2>
             <p className="mt-3 leading-8">
               Toulouse Tarn Transfert est couvert par les assurances professionnelles obligatoires applicables à
-              l'activité de VTC.
+              l&apos;activité de VTC.
             </p>
             <p className="mt-2 leading-8">
               La responsabilité est limitée aux dommages directement imputables à la prestation.
@@ -165,11 +165,11 @@ export default function ConditionsGeneralesDeVentePage() {
         </section>
 
         <section className="mt-12 border-t border-amber-500/20 pt-10 text-slate-200">
-          <h2 className="text-3xl font-semibold text-amber-300">Politique d'annulation</h2>
+          <h2 className="text-3xl font-semibold text-amber-300">Politique d&apos;annulation</h2>
 
           <p className="mt-5 leading-8">
             Afin de garantir la disponibilité des chauffeurs de Toulouse Tarn Transfert et la qualité des prestations,
-            les conditions suivantes s'appliquent :
+            les conditions suivantes s&apos;appliquent :
           </p>
 
           <ul className="mt-4 list-disc space-y-2 pl-6 leading-8">
@@ -190,7 +190,7 @@ export default function ConditionsGeneralesDeVentePage() {
           </p>
 
           <p className="mt-2 leading-8">
-            En cas d'annulation imputable à Toulouse Tarn Transfert, le client sera intégralement remboursé des sommes
+            En cas d&apos;annulation imputable à Toulouse Tarn Transfert, le client sera intégralement remboursé des sommes
             versées, sauf accord pour un report de la prestation.
           </p>
         </section>

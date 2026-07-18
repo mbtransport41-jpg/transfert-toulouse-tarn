@@ -37,7 +37,11 @@ const PUBLIC_KEY = 'Ei0v13zei0qINODgj';
 
 export default function BookingForm() {
   const searchParams = useSearchParams();
-  const [formData, setFormData] = useState<FormValues>(initialForm);
+  const [formData, setFormData] = useState<FormValues>(() => ({
+    ...initialForm,
+    pickup: searchParams.get('pickup') ?? '',
+    destination: searchParams.get('destination') ?? '',
+  }));
   const [status, setStatus] = useState<Status>({ type: 'idle', message: '' });
 const tarifs: Record<string, number> = {
   "Aéroport Toulouse-Blagnac|Castres": 119,
@@ -76,18 +80,6 @@ const prix =
   useEffect(() => {
     emailjs.init(PUBLIC_KEY);
   }, []);
-
-  useEffect(() => {
-    const destinationFromUrl = searchParams.get('destination');
-    if (!destinationFromUrl) {
-      return;
-    }
-
-    setFormData((prev) => ({
-      ...prev,
-      destination: destinationFromUrl,
-    }));
-  }, [searchParams]);
 
 const handleStripePayment = async () => {
   if (!formData.email) {

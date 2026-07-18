@@ -107,7 +107,7 @@ const destinationPagesData = {
       "Castres reste une destination fréquente pour les trajets d'affaires, les retours vers le centre-ville et les correspondances vers les communes du sud du Tarn.",
     localHighlights: ["centre-ville de Castres", "Sud du Tarn", "correspondances professionnelles"],
     relatedSlugs: ["albi", "mazamet", "revel", "lavaur"],
-    faq: genericFaq("Castres", 129, 119),
+    faq: genericFaq("Castres", 119, 109),
   },
   lavaur: {
     slug: "lavaur",
