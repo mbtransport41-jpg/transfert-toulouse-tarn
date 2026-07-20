@@ -4,9 +4,11 @@ import type { FaqItem } from "@/app/data/transfert";
 
 export type DestinationSlug =
   | "albi"
+  | "carcassonne"
   | "castres"
   | "lavaur"
   | "mazamet"
+  | "soreze"
   | "revel"
   | "saint-ferreol"
   | "castelnaudary"
@@ -226,8 +228,38 @@ const destinationPagesData = {
     localContext:
       "Saint-Ferréol attire des déplacements saisonniers, des visites au lac et des trajets vers le secteur de Revel, Sorèze et les villages du Lauragais.",
     localHighlights: ["lac de Saint-Ferréol", "Revel", "Sorèze"],
-    relatedSlugs: ["revel", "lavaur", "castelnaudary", "mazamet"],
+    relatedSlugs: ["revel", "soreze", "castelnaudary", "mazamet"],
     faq: genericFaq("Saint-Ferréol", 119, 109),
+  },
+  soreze: {
+    slug: "soreze",
+    city: "Sorèze",
+    region: "Tarn",
+    metaTitle: "Chauffeur privé Sorèze | VTC premium depuis Toulouse-Blagnac et Matabiau",
+    metaDescription:
+      "Réservez un chauffeur privé à Sorèze depuis Toulouse-Blagnac ou Matabiau avec prix fixe, confort premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé",
+      "VTC",
+      "transport privé",
+      "taxi alternatif",
+      "transfert aéroport Toulouse",
+      "transfert gare Toulouse",
+      "chauffeur privé Sorèze",
+      "VTC Sorèze",
+      "taxi alternatif Sorèze",
+      "transport privé Sorèze",
+      "chauffeur privé Tarn",
+    ],
+    image: "/Soreze.png",
+    imageAlt: "Transfert chauffeur privé vers Sorèze depuis Toulouse",
+    airportTransferSlug: "aeroport-toulouse-soreze",
+    stationTransferSlug: "gare-matabiau-soreze",
+    localContext:
+      "Sorèze attire des trajets touristiques, culturels et familiaux autour de l'abbaye-école, du piémont de la Montagne Noire et du secteur de Revel.",
+    localHighlights: ["abbaye-école de Sorèze", "Montagne Noire", "secteur de Revel"],
+    relatedSlugs: ["saint-ferreol", "revel", "castres", "castelnaudary"],
+    faq: genericFaq("Sorèze", 120, 114),
   },
   castelnaudary: {
     slug: "castelnaudary",
@@ -258,6 +290,36 @@ const destinationPagesData = {
     localHighlights: ["canal du Midi", "Lauragais", "Aude"],
     relatedSlugs: ["revel", "lavaur", "moissac", "montauban"],
     faq: genericFaq("Castelnaudary", 109, 99),
+  },
+  carcassonne: {
+    slug: "carcassonne",
+    city: "Carcassonne",
+    region: "Aude",
+    metaTitle: "Chauffeur privé Carcassonne | VTC premium depuis Toulouse-Blagnac et Matabiau",
+    metaDescription:
+      "Réservez un chauffeur privé à Carcassonne depuis Toulouse-Blagnac ou Matabiau avec tarif fixe, véhicule premium et service fiable 24h/24.",
+    keywords: [
+      "chauffeur privé",
+      "VTC",
+      "transport privé",
+      "taxi alternatif",
+      "transfert aéroport Toulouse",
+      "transfert gare Toulouse",
+      "chauffeur privé Carcassonne",
+      "VTC Carcassonne",
+      "taxi alternatif Carcassonne",
+      "transport privé Carcassonne",
+      "chauffeur privé Aude",
+    ],
+    image: "/Carcassonne.png",
+    imageAlt: "Chauffeur privé vers Carcassonne au départ de Toulouse",
+    airportTransferSlug: "aeroport-toulouse-carcassonne",
+    stationTransferSlug: "gare-matabiau-carcassonne",
+    localContext:
+      "Carcassonne concentre des déplacements touristiques et professionnels, notamment vers la cité médiévale, la gare et les axes stratégiques de l'Aude.",
+    localHighlights: ["cité médiévale", "centre-ville de Carcassonne", "axes de l'Aude"],
+    relatedSlugs: ["castelnaudary", "soreze", "revel", "montauban"],
+    faq: genericFaq("Carcassonne", 156, 132),
   },
   montauban: {
     slug: "montauban",

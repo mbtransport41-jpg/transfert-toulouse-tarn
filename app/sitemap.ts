@@ -20,6 +20,8 @@ const staticPaths = [
   "/transferts/lavaur",
   "/transferts/revel",
   "/transferts/mazamet",
+  "/transferts/soreze",
+  "/transferts/carcassonne",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

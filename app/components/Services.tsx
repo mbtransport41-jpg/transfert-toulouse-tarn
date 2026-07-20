@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { buildBookingHref } from "@/app/lib/booking";
 
 const services = [
   {
@@ -57,11 +58,25 @@ const destinations = [
     prices: ["Aéroport dès 109 €", "Gare dès 99 €"],
   },
   {
+    name: "Sorèze",
+    airportSlug: "aeroport-toulouse-soreze",
+    stationSlug: "gare-matabiau-soreze",
+    image: "/Soreze.png",
+    prices: ["Aéroport dès 120 €", "Gare dès 114 €"],
+  },
+  {
     name: "Saint-Ferréol",
     airportSlug: "aeroport-toulouse-saint-ferreol",
     stationSlug: "gare-matabiau-saint-ferreol",
     image: "/St-ferriol.png",
     prices: ["Aéroport dès 119 €", "Gare dès 109 €"],
+  },
+  {
+    name: "Carcassonne",
+    airportSlug: "aeroport-toulouse-carcassonne",
+    stationSlug: "gare-matabiau-carcassonne",
+    image: "/Carcassonne.png",
+    prices: ["Aéroport dès 156 €", "Gare dès 132 €"],
   },
   {
     name: "Castelnaudary",
@@ -139,6 +154,25 @@ export default function Services() {
                   >
                     Gare
                   </Link>
+                </div>
+                <div className="mt-5 rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4">
+                  <div className="inline-flex rounded-full bg-amber-500 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-black">
+                    Transport retour vers Toulouse
+                  </div>
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    <Link
+                      href={buildBookingHref(destination.name, "Aéroport Toulouse-Blagnac")}
+                      className="inline-flex justify-center rounded-full border border-amber-400/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-300 transition hover:bg-amber-500 hover:text-black"
+                    >
+                      Aéroport
+                    </Link>
+                    <Link
+                      href={buildBookingHref(destination.name, "Gare Toulouse-Matabiau")}
+                      className="inline-flex justify-center rounded-full bg-amber-500 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-amber-400"
+                    >
+                      Gare
+                    </Link>
+                  </div>
                 </div>
               </div>
             </article>

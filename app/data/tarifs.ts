@@ -29,11 +29,23 @@ export const tarifs = {
   "Gare Toulouse Matabiau|Revel": 99,
   "Revel|Gare Toulouse Matabiau": 99,
 
+  "Aéroport Toulouse-Blagnac|Sorèze": 120,
+  "Sorèze|Aéroport Toulouse-Blagnac": 120,
+
+  "Gare Toulouse Matabiau|Sorèze": 114,
+  "Sorèze|Gare Toulouse Matabiau": 114,
+
   "Aéroport Toulouse-Blagnac|Saint-Ferréol": 119,
   "Saint-Ferréol|Aéroport Toulouse-Blagnac": 119,
 
   "Gare Toulouse Matabiau|Saint-Ferréol": 109,
   "Saint-Ferréol|Gare Toulouse Matabiau": 109,
+
+  "Aéroport Toulouse-Blagnac|Carcassonne": 156,
+  "Carcassonne|Aéroport Toulouse-Blagnac": 156,
+
+  "Gare Toulouse Matabiau|Carcassonne": 132,
+  "Carcassonne|Gare Toulouse Matabiau": 132,
 
   "Aéroport Toulouse-Blagnac|Castelnaudary": 109,
   "Castelnaudary|Aéroport Toulouse-Blagnac": 109,

@@ -12,6 +12,8 @@ type FormValues = {
   destination: string;
   date: string;
   passengers: string;
+  bags: string;
+  trip_type: string;
   message: string;
 };
 
@@ -28,6 +30,8 @@ const initialForm: FormValues = {
   destination: '',
   date: '',
   passengers: '',
+  bags: '',
+  trip_type: '',
   message: '',
 };
 
@@ -35,53 +39,80 @@ const SERVICE_ID = 'service_qq5eacp';
 const TEMPLATE_ID = 'template_72td9cf';
 const PUBLIC_KEY = 'Ei0v13zei0qINODgj';
 
+const baseTarifs: Array<[string, string, number]> = [
+  ['Aéroport Toulouse-Blagnac', 'Castres', 119],
+  ['Gare Toulouse-Matabiau', 'Castres', 109],
+  ['Aéroport Toulouse-Blagnac', 'Albi', 129],
+  ['Gare Toulouse-Matabiau', 'Albi', 119],
+  ['Aéroport Toulouse-Blagnac', 'Mazamet', 129],
+  ['Gare Toulouse-Matabiau', 'Mazamet', 119],
+  ['Aéroport Toulouse-Blagnac', 'Lavaur', 109],
+  ['Gare Toulouse-Matabiau', 'Lavaur', 99],
+  ['Aéroport Toulouse-Blagnac', 'Revel', 109],
+  ['Gare Toulouse-Matabiau', 'Revel', 99],
+  ['Aéroport Toulouse-Blagnac', 'Sorèze', 120],
+  ['Gare Toulouse-Matabiau', 'Sorèze', 114],
+  ['Aéroport Toulouse-Blagnac', 'Saint-Ferréol', 119],
+  ['Gare Toulouse-Matabiau', 'Saint-Ferréol', 109],
+  ['Aéroport Toulouse-Blagnac', 'Carcassonne', 156],
+  ['Gare Toulouse-Matabiau', 'Carcassonne', 132],
+  ['Aéroport Toulouse-Blagnac', 'Castelnaudary', 109],
+  ['Gare Toulouse-Matabiau', 'Castelnaudary', 99],
+  ['Aéroport Toulouse-Blagnac', 'Montauban', 99],
+  ['Gare Toulouse-Matabiau', 'Montauban', 89],
+  ['Aéroport Toulouse-Blagnac', 'Moissac', 109],
+  ['Gare Toulouse-Matabiau', 'Moissac', 99],
+  ['Aéroport Toulouse-Blagnac', 'Castelsarrasin', 109],
+  ['Gare Toulouse-Matabiau', 'Castelsarrasin', 99],
+];
+
+const tarifs: Record<string, number> = baseTarifs.reduce<Record<string, number>>((acc, [pickup, destination, price]) => {
+  acc[`${pickup}|${destination}`] = price;
+  acc[`${destination}|${pickup}`] = price;
+  return acc;
+}, {});
+
+const locations = [
+  'Aéroport Toulouse-Blagnac',
+  'Gare Toulouse-Matabiau',
+  'Castres',
+  'Albi',
+  'Mazamet',
+  'Lavaur',
+  'Revel',
+  'Sorèze',
+  'Saint-Ferréol',
+  'Carcassonne',
+  'Castelnaudary',
+  'Montauban',
+  'Moissac',
+  'Castelsarrasin',
+];
+
 export default function BookingForm() {
   const searchParams = useSearchParams();
+  const pickupParam = searchParams.get('pickup');
+  const destinationParam = searchParams.get('destination');
   const [formData, setFormData] = useState<FormValues>(() => ({
     ...initialForm,
-    pickup: searchParams.get('pickup') ?? '',
-    destination: searchParams.get('destination') ?? '',
+    pickup: pickupParam ?? '',
+    destination: destinationParam ?? '',
   }));
   const [status, setStatus] = useState<Status>({ type: 'idle', message: '' });
-const tarifs: Record<string, number> = {
-  "Aéroport Toulouse-Blagnac|Castres": 119,
-  "Gare Toulouse-Matabiau|Castres": 109,
 
-  "Aéroport Toulouse-Blagnac|Albi": 129,
-  "Gare Toulouse-Matabiau|Albi": 119,
-
-  "Aéroport Toulouse-Blagnac|Mazamet": 129,
-  "Gare Toulouse-Matabiau|Mazamet": 119,
-
-  "Aéroport Toulouse-Blagnac|Lavaur": 109,
-  "Gare Toulouse-Matabiau|Lavaur": 99,
-
-  "Aéroport Toulouse-Blagnac|Revel": 109,
-  "Gare Toulouse-Matabiau|Revel": 99,
-
-  "Aéroport Toulouse-Blagnac|Saint-Ferréol": 119,
-  "Gare Toulouse-Matabiau|Saint-Ferréol": 109,
-
-  "Aéroport Toulouse-Blagnac|Castelnaudary": 109,
-  "Gare Toulouse-Matabiau|Castelnaudary": 99,
-
-  "Aéroport Toulouse-Blagnac|Montauban": 99,
-  "Gare Toulouse-Matabiau|Montauban": 89,
-
-  "Aéroport Toulouse-Blagnac|Moissac": 109,
-  "Gare Toulouse-Matabiau|Moissac": 99,
-
-  "Aéroport Toulouse-Blagnac|Castelsarrasin": 109,
-  "Gare Toulouse-Matabiau|Castelsarrasin": 99,
-};
-
-const prix =
-  tarifs[`${formData.pickup}|${formData.destination}`] ?? 0;
   useEffect(() => {
-    emailjs.init(PUBLIC_KEY);
-  }, []);
+    if (!pickupParam && !destinationParam) return;
 
-const handleStripePayment = async () => {
+    setFormData((prev) => ({
+      ...prev,
+      pickup: pickupParam ?? prev.pickup,
+      destination: destinationParam ?? prev.destination,
+    }));
+  }, [pickupParam, destinationParam]);
+
+  const prix = tarifs[`${formData.pickup}|${formData.destination}`] ?? 0;
+
+  const handleStripePayment = async () => {
   if (!formData.email) {
     setStatus({ type: 'error', message: 'Veuillez renseigner votre adresse e-mail avant de payer.' });
     return;
@@ -120,7 +151,7 @@ const handleStripePayment = async () => {
     const message = error instanceof Error ? error.message : 'Erreur inconnue pendant le paiement.';
     setStatus({ type: 'error', message });
   }
-};
+  };
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -136,28 +167,49 @@ const handleStripePayment = async () => {
     event.preventDefault();
     setStatus({ type: 'loading', message: 'Envoi de votre demande en cours...' });
 
+    const requestDateTime = new Date().toLocaleString('fr-FR', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'Europe/Paris',
+    });
+
+    const estimatedPrice = prix > 0 ? `${prix} EUR` : 'Non calcule';
+
     try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          name: formData.name,
-          email: formData.email,
-          reply_to: formData.email,
-          phone: formData.phone,
-          pickup: formData.pickup,
-          departure: formData.pickup,
-          destination: formData.destination,
-          arrival: formData.destination,
-          date: formData.date,
-          travel_date: formData.date,
-          passengers: formData.passengers,
-          message: formData.message,
-          user_message: formData.message,
+      const response = await fetch('/api/booking-request', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        PUBLIC_KEY
-      );
+        body: JSON.stringify({
+          ...formData,
+          estimated_price: estimatedPrice,
+          request_datetime: requestDateTime,
+        }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.error || 'Impossible d\'envoyer la demande de transfert.');
+      }
+
+      if (data?.sentBy === 'client') {
+        const serviceId = data?.serviceId || SERVICE_ID;
+        const templateId = data?.templateId || TEMPLATE_ID;
+        const publicKey = data?.publicKey || PUBLIC_KEY;
+        const templateParams = data?.templateParams || {
+          ...formData,
+          estimated_price: estimatedPrice,
+          request_datetime: requestDateTime,
+        };
+
+        await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      }
 
       setStatus({
         type: 'success',
@@ -165,10 +217,13 @@ const handleStripePayment = async () => {
       });
       setFormData(initialForm);
     } catch (error) {
-      console.error('EmailJS error:', error);
+      console.error('Booking request error:', error);
+      const message = error instanceof Error
+        ? error.message
+        : 'Une erreur est survenue. Veuillez nous contacter directement par téléphone.';
       setStatus({
         type: 'error',
-        message: 'Une erreur est survenue. Veuillez nous contacter directement par téléphone.',
+        message,
       });
     }
   };
@@ -266,12 +321,11 @@ const handleStripePayment = async () => {
   className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
 >
   <option value="">Choisir un départ</option>
-  <option value="Aéroport Toulouse-Blagnac">
-    ✈️ Aéroport Toulouse-Blagnac
-  </option>
-  <option value="Gare Toulouse-Matabiau">
-    🚆 Gare Toulouse-Matabiau
-  </option>
+  {locations.map((location) => (
+    <option key={location} value={location}>
+      {location}
+    </option>
+  ))}
 </select>
           </div>
 
@@ -288,16 +342,11 @@ const handleStripePayment = async () => {
   className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
 >
   <option value="">Choisir une destination</option>
-  <option value="Castres">Castres</option>
-  <option value="Albi">Albi</option>
-  <option value="Mazamet">Mazamet</option>
-  <option value="Lavaur">Lavaur</option>
-  <option value="Revel">Revel</option>
-  <option value="Saint-Ferréol">Saint-Ferréol</option>
-  <option value="Castelnaudary">Castelnaudary</option>
-  <option value="Montauban">Montauban</option>
-  <option value="Moissac">Moissac</option>
-  <option value="Castelsarrasin">Castelsarrasin</option>
+  {locations.map((location) => (
+    <option key={location} value={location}>
+      {location}
+    </option>
+  ))}
 </select>
           </div>
 
@@ -314,6 +363,45 @@ const handleStripePayment = async () => {
               required
               className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
+          </div>
+
+          <div>
+            <label htmlFor="bags" className="mb-2 block text-sm font-medium text-slate-700">
+              Nombre de bagages
+            </label>
+            <select
+              id="bags"
+              name="bags"
+              value={formData.bags}
+              onChange={handleChange}
+              required
+              className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+            >
+              <option value="">Choisir</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4+">4 et plus</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="trip_type" className="mb-2 block text-sm font-medium text-slate-700">
+              Type de trajet
+            </label>
+            <select
+              id="trip_type"
+              name="trip_type"
+              value={formData.trip_type}
+              onChange={handleChange}
+              required
+              className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+            >
+              <option value="">Choisir</option>
+              <option value="Aller simple">Aller simple</option>
+              <option value="Aller-retour">Aller-retour</option>
+            </select>
           </div>
         </div>
 

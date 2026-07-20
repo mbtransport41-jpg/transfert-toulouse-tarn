@@ -14,7 +14,9 @@ export type Transfer = {
     | "Lavaur"
     | "Revel"
     | "Mazamet"
+    | "Sorèze"
     | "Saint-Ferréol"
+    | "Carcassonne"
     | "Castelnaudary"
     | "Montauban"
     | "Moissac"
@@ -198,6 +200,54 @@ const baseTransfers: Omit<Transfer, "seoParagraphs" | "faq">[] = [
     ],
     intro:
       "Rejoignez Mazamet depuis l'aéroport Toulouse-Blagnac avec une prestation premium : véhicule confortable, chauffeur discret et organisation fiable.",
+  },
+  {
+    id: "airport-soreze",
+    slug: "aeroport-toulouse-soreze",
+    origin: "aeroport",
+    depart: airport,
+    arrivee: "Sorèze",
+    prix: 120,
+    temps: "1h05",
+    distanceKm: 75,
+    image: "/Soreze.png",
+    title: "Chauffeur privé Sorèze depuis Toulouse-Blagnac | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Sorèze depuis l'aéroport Toulouse-Blagnac. Tarif fixe 120 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Sorèze",
+      "transfert aéroport Toulouse",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Tarn",
+      "chauffeur aéroport Toulouse",
+    ],
+    intro:
+      "Depuis l'aéroport Toulouse-Blagnac, rejoignez Sorèze avec un chauffeur privé premium, ponctuel et un prix fixe annoncé à l'avance.",
+  },
+  {
+    id: "airport-carcassonne",
+    slug: "aeroport-toulouse-carcassonne",
+    origin: "aeroport",
+    depart: airport,
+    arrivee: "Carcassonne",
+    prix: 156,
+    temps: "1h10",
+    distanceKm: 95,
+    image: "/Carcassonne.png",
+    title: "Chauffeur privé Carcassonne depuis Toulouse-Blagnac | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Carcassonne depuis l'aéroport Toulouse-Blagnac. Tarif fixe 156 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Carcassonne",
+      "transfert aéroport Toulouse",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Aude",
+      "chauffeur aéroport Toulouse",
+    ],
+    intro:
+      "Pour Carcassonne, profitez d'un transfert premium depuis Toulouse-Blagnac avec un chauffeur privé discret et un service fiable.",
   },
   {
     id: "airport-saint-ferreol",
@@ -438,6 +488,54 @@ const baseTransfers: Omit<Transfer, "seoParagraphs" | "faq">[] = [
     ],
     intro:
       "Rejoignez Mazamet depuis la gare Toulouse-Matabiau avec une solution premium orientée ponctualité, confort et sérénité.",
+  },
+  {
+    id: "station-soreze",
+    slug: "gare-matabiau-soreze",
+    origin: "gare",
+    depart: station,
+    arrivee: "Sorèze",
+    prix: 114,
+    temps: "1h",
+    distanceKm: 70,
+    image: "/Soreze.png",
+    title: "Chauffeur privé Sorèze depuis la gare Matabiau | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Sorèze depuis la gare Matabiau. Tarif fixe 114 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Sorèze",
+      "transfert gare Matabiau",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Tarn",
+      "chauffeur gare Toulouse",
+    ],
+    intro:
+      "Depuis la gare Toulouse-Matabiau, partez vers Sorèze avec un service chauffeur privé premium, confortable et sans surprise tarifaire.",
+  },
+  {
+    id: "station-carcassonne",
+    slug: "gare-matabiau-carcassonne",
+    origin: "gare",
+    depart: station,
+    arrivee: "Carcassonne",
+    prix: 132,
+    temps: "1h05",
+    distanceKm: 90,
+    image: "/Carcassonne.png",
+    title: "Chauffeur privé Carcassonne depuis la gare Matabiau | Transfert premium",
+    metaDescription:
+      "Réservez votre chauffeur privé Carcassonne depuis la gare Matabiau. Tarif fixe 132 EUR, transport premium et réservation 24h/24.",
+    keywords: [
+      "chauffeur privé Carcassonne",
+      "transfert gare Matabiau",
+      "VTC Toulouse",
+      "réservation chauffeur privé",
+      "chauffeur privé Aude",
+      "chauffeur gare Toulouse",
+    ],
+    intro:
+      "Rejoignez Carcassonne depuis la gare Toulouse-Matabiau avec un chauffeur privé premium, ponctuel et orienté confort.",
   },
   {
     id: "station-saint-ferreol",
