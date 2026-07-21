@@ -86,7 +86,7 @@ const destinations = [
     prices: ["Aéroport dès 109 €", "Gare dès 99 €"],
   },
   {
-    name: "Montauban",
+    name: "Montauban, Saint-Nauphary",
     airportSlug: "aeroport-toulouse-montauban",
     stationSlug: "gare-matabiau-montauban",
     image: "/Montauban.png",
@@ -177,6 +177,33 @@ export default function Services() {
               </div>
             </article>
           ))}
+
+          <article className="overflow-hidden rounded-[1.5rem] border border-amber-400/30 bg-[#14120a] shadow-2xl">
+            <div className="relative h-44 w-full overflow-hidden">
+              <Image src="/Soreze.png" alt="Sorèze Carcassonne" fill className="object-cover" />
+            </div>
+            <div className="p-5">
+              <h4 className="text-xl font-semibold text-amber-400">Sorèze ↔ Carcassonne</h4>
+              <div className="mt-4 space-y-1 text-sm text-slate-300">
+                <p>Aller-retour dès 139 € TTC</p>
+                <p>Service premium et tarif fixe</p>
+              </div>
+              <div className="mt-5 grid grid-cols-1 gap-2">
+                <Link
+                  href="/transfert/soreze-carcassonne"
+                  className="inline-flex justify-center rounded-full border border-amber-400/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-amber-300 transition hover:bg-amber-500 hover:text-black"
+                >
+                  Voir le transfert
+                </Link>
+                <Link
+                  href={buildBookingHref("Sorèze", "Carcassonne")}
+                  className="inline-flex justify-center rounded-full bg-amber-500 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-amber-400"
+                >
+                  Réserver
+                </Link>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
 
