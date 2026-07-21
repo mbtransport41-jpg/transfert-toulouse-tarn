@@ -4,9 +4,9 @@ import { buildSeoMetadata } from "../lib/seo";
 import { transfers } from "@/app/data/transfert";
 
 export const metadata: Metadata = buildSeoMetadata({
-  title: "Nos transferts | Chauffeur privé Toulouse-Blagnac et Matabiau vers 12 destinations",
+  title: "Nos transferts | Chauffeur privé Toulouse-Blagnac et Matabiau vers 13 destinations",
   description:
-    "Découvrez la liste complète des transferts privés depuis Toulouse-Blagnac et la gare Matabiau vers Castres, Albi, Lavaur, Revel, Sorèze, Saint-Ferréol, Carcassonne, Castelnaudary, Montauban, Moissac et Castelsarrasin.",
+    "Découvrez la liste complète des transferts privés depuis Toulouse-Blagnac et la gare Matabiau vers Castres, Albi, Lavaur, Revel, Sorèze, Saint-Ferréol, Carcassonne, Castelnaudary, Montauban, Saint-Nauphary, Moissac, Castelsarrasin et Sorèze ↔ Carcassonne.",
   path: "/nos-transferts",
   keywords: [
     "transfert aéroport Toulouse",
@@ -23,6 +23,7 @@ export const metadata: Metadata = buildSeoMetadata({
 export default function NosTransfertsPage() {
   const airport = transfers.filter((item) => item.origin === "aeroport");
   const station = transfers.filter((item) => item.origin === "gare");
+  const special = transfers.filter((item) => item.origin === "special");
   const totalTransfers = transfers.length;
 
   return (
@@ -33,7 +34,7 @@ export default function NosTransfertsPage() {
         <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
           Consultez la liste complète des {totalTransfers} liaisons privées proposées par Toulouse Tarn Transfert pour
           vos trajets vers Castres, Albi, Lavaur, Revel, Sorèze, Saint-Ferréol, Carcassonne, Castelnaudary, Montauban,
-          Moissac et Castelsarrasin.
+          Moissac, Castelsarrasin et Sorèze ↔ Carcassonne.
         </p>
       </section>
 
@@ -69,6 +70,26 @@ export default function NosTransfertsPage() {
             ))}
           </div>
         </article>
+
+        {special.length ? (
+          <article className="lg:col-span-2">
+            <h2 className="text-2xl font-bold text-amber-300">Liaisons spéciales</h2>
+            <div className="mt-6 space-y-4">
+              {special.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/transfert/${item.slug}`}
+                  className="block rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-amber-300 hover:bg-white/10"
+                >
+                  <p className="text-lg font-semibold">
+                    {item.depart} -&gt; {item.arrivee}
+                  </p>
+                  <p className="mt-2 text-sm text-slate-300">Des {item.prix} € TTC • {item.temps}</p>
+                </Link>
+              ))}
+            </div>
+          </article>
+        ) : null}
       </section>
     </main>
   );

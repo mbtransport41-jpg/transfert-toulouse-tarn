@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTransferBySlug } from "@/app/data/transfert";
+import { buildBookingHref } from "@/app/lib/booking";
 import { siteUrl } from "@/app/lib/seo";
 import {
   getDestinationPageConfig,
@@ -86,6 +87,8 @@ export default function DestinationPage({ slug }: { slug: DestinationSlug }) {
     .filter((item): item is NonNullable<typeof item> => Boolean(item));
   const narrative = buildNarrative(config.city, config.region, config.localContext, config.localHighlights);
   const structuredData = buildStructuredData(config.slug);
+  const airportReturnBookingHref = buildBookingHref(config.city, "Aéroport Toulouse-Blagnac");
+  const stationReturnBookingHref = buildBookingHref(config.city, "Gare Toulouse-Matabiau");
 
   return (
     <main className="bg-black text-white">
@@ -161,6 +164,35 @@ export default function DestinationPage({ slug }: { slug: DestinationSlug }) {
                 <p className="mt-4 text-sm font-semibold text-amber-700">Voir la page de réservation dédiée</p>
               </Link>
             ) : null}
+          </div>
+
+          <div className="mt-14">
+            <h3 className="text-2xl font-bold text-slate-900 sm:text-3xl">Transport retour vers Toulouse</h3>
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              {airportTransfer ? (
+                <Link
+                  href={airportReturnBookingHref}
+                  className="rounded-3xl border border-amber-200 bg-white p-8 shadow-sm transition hover:border-amber-300 hover:bg-amber-50"
+                >
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">✈️ Aéroport Toulouse-Blagnac</p>
+                  <h4 className="mt-3 text-2xl font-bold text-slate-900">{config.city} -&gt; Aéroport Toulouse-Blagnac</h4>
+                  <p className="mt-3 text-slate-700">Tarif fixe de {airportTransfer.prix} EUR, identique au trajet aller.</p>
+                  <p className="mt-4 text-sm font-semibold text-amber-700">Réserver ce trajet retour</p>
+                </Link>
+              ) : null}
+
+              {stationTransfer ? (
+                <Link
+                  href={stationReturnBookingHref}
+                  className="rounded-3xl border border-amber-200 bg-white p-8 shadow-sm transition hover:border-amber-300 hover:bg-amber-50"
+                >
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">🚉 Gare Toulouse-Matabiau</p>
+                  <h4 className="mt-3 text-2xl font-bold text-slate-900">{config.city} -&gt; Gare Toulouse-Matabiau</h4>
+                  <p className="mt-3 text-slate-700">Tarif fixe de {stationTransfer.prix} EUR, identique au trajet aller.</p>
+                  <p className="mt-4 text-sm font-semibold text-amber-700">Réserver ce trajet retour</p>
+                </Link>
+              ) : null}
+            </div>
           </div>
         </div>
       </section>

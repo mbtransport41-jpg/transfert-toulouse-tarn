@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BookingForm from "@/app/components/BookingForm";
 import { getOtherTransfers, getTransferBySlug, transfers } from "@/app/data/transfert";
+import { buildBookingHref } from "@/app/lib/booking";
 import { buildSeoMetadata, siteUrl } from "@/app/lib/seo";
 
 type Params = Promise<{ slug: string }>;
@@ -116,12 +117,12 @@ export default async function TransferPage({ params }: { params: Params }) {
             </h1>
             <p className="mt-4 max-w-3xl text-base text-slate-200 sm:text-lg">{transfer.intro}</p>
             <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-black">
-              <span className="rounded-full bg-amber-400 px-4 py-2">Des {transfer.prix} EUR</span>
+              <span className="rounded-full bg-amber-400 px-4 py-2">Des {transfer.prix} € TTC</span>
               <span className="rounded-full bg-white px-4 py-2">Durée moyenne : {transfer.temps}</span>
               <span className="rounded-full bg-white px-4 py-2">Distance : {transfer.distanceKm} km</span>
             </div>
             <Link
-              href={`/#booking?pickup=${encodeURIComponent(transfer.depart)}&destination=${encodeURIComponent(transfer.arrivee)}`}
+              href={buildBookingHref(transfer.depart, transfer.arrivee)}
               className="mt-8 inline-flex rounded-full bg-amber-500 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-amber-400"
             >
               Réserver
@@ -170,7 +171,7 @@ export default async function TransferPage({ params }: { params: Params }) {
             <article className="rounded-3xl border border-amber-200 bg-white p-8 shadow-sm">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">Tarif</p>
               <h2 className="mt-3 text-2xl font-bold text-slate-900">Prix de ce trajet</h2>
-              <p className="mt-5 text-5xl font-bold text-amber-600">{transfer.prix} EUR</p>
+              <p className="mt-5 text-5xl font-bold text-amber-600">{transfer.prix} € TTC</p>
               <p className="mt-3 text-slate-600">Tarif fixe annoncé à la réservation.</p>
             </article>
             <article className="rounded-3xl border border-amber-200 bg-white p-8 shadow-sm">
@@ -207,12 +208,12 @@ export default async function TransferPage({ params }: { params: Params }) {
                   className="rounded-2xl border border-slate-200 bg-white p-5 text-slate-800 transition hover:border-amber-300 hover:bg-amber-50"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">
-                    {item.origin === "aeroport" ? "Aéroport" : "Gare"}
+                    {item.origin === "aeroport" ? "Aéroport" : item.origin === "gare" ? "Gare" : "Liaison spéciale"}
                   </p>
                   <p className="mt-2 text-lg font-semibold">
                     {item.depart} -&gt; {item.arrivee}
                   </p>
-                  <p className="mt-2 text-sm text-slate-600">Des {item.prix} EUR</p>
+                  <p className="mt-2 text-sm text-slate-600">Des {item.prix} € TTC</p>
                 </Link>
               ))}
             </div>

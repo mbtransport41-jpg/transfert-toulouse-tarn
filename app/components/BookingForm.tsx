@@ -39,80 +39,53 @@ const SERVICE_ID = 'service_qq5eacp';
 const TEMPLATE_ID = 'template_72td9cf';
 const PUBLIC_KEY = 'Ei0v13zei0qINODgj';
 
-const baseTarifs: Array<[string, string, number]> = [
-  ['Aéroport Toulouse-Blagnac', 'Castres', 119],
-  ['Gare Toulouse-Matabiau', 'Castres', 109],
-  ['Aéroport Toulouse-Blagnac', 'Albi', 129],
-  ['Gare Toulouse-Matabiau', 'Albi', 119],
-  ['Aéroport Toulouse-Blagnac', 'Mazamet', 129],
-  ['Gare Toulouse-Matabiau', 'Mazamet', 119],
-  ['Aéroport Toulouse-Blagnac', 'Lavaur', 109],
-  ['Gare Toulouse-Matabiau', 'Lavaur', 99],
-  ['Aéroport Toulouse-Blagnac', 'Revel', 109],
-  ['Gare Toulouse-Matabiau', 'Revel', 99],
-  ['Aéroport Toulouse-Blagnac', 'Sorèze', 120],
-  ['Gare Toulouse-Matabiau', 'Sorèze', 114],
-  ['Aéroport Toulouse-Blagnac', 'Saint-Ferréol', 119],
-  ['Gare Toulouse-Matabiau', 'Saint-Ferréol', 109],
-  ['Aéroport Toulouse-Blagnac', 'Carcassonne', 156],
-  ['Gare Toulouse-Matabiau', 'Carcassonne', 132],
-  ['Aéroport Toulouse-Blagnac', 'Castelnaudary', 109],
-  ['Gare Toulouse-Matabiau', 'Castelnaudary', 99],
-  ['Aéroport Toulouse-Blagnac', 'Montauban', 99],
-  ['Gare Toulouse-Matabiau', 'Montauban', 89],
-  ['Aéroport Toulouse-Blagnac', 'Moissac', 109],
-  ['Gare Toulouse-Matabiau', 'Moissac', 99],
-  ['Aéroport Toulouse-Blagnac', 'Castelsarrasin', 109],
-  ['Gare Toulouse-Matabiau', 'Castelsarrasin', 99],
-];
-
-const tarifs: Record<string, number> = baseTarifs.reduce<Record<string, number>>((acc, [pickup, destination, price]) => {
-  acc[`${pickup}|${destination}`] = price;
-  acc[`${destination}|${pickup}`] = price;
-  return acc;
-}, {});
-
-const locations = [
-  'Aéroport Toulouse-Blagnac',
-  'Gare Toulouse-Matabiau',
-  'Castres',
-  'Albi',
-  'Mazamet',
-  'Lavaur',
-  'Revel',
-  'Sorèze',
-  'Saint-Ferréol',
-  'Carcassonne',
-  'Castelnaudary',
-  'Montauban',
-  'Moissac',
-  'Castelsarrasin',
-];
-
 export default function BookingForm() {
   const searchParams = useSearchParams();
-  const pickupParam = searchParams.get('pickup');
-  const destinationParam = searchParams.get('destination');
   const [formData, setFormData] = useState<FormValues>(() => ({
     ...initialForm,
-    pickup: pickupParam ?? '',
-    destination: destinationParam ?? '',
+    pickup: searchParams.get('pickup') ?? '',
+    destination: searchParams.get('destination') ?? '',
   }));
   const [status, setStatus] = useState<Status>({ type: 'idle', message: '' });
+const tarifs: Record<string, number> = {
+  "Aéroport Toulouse-Blagnac|Castres": 119,
+  "Gare Toulouse-Matabiau|Castres": 109,
 
+  "Aéroport Toulouse-Blagnac|Albi": 129,
+  "Gare Toulouse-Matabiau|Albi": 119,
+
+  "Aéroport Toulouse-Blagnac|Mazamet": 129,
+  "Gare Toulouse-Matabiau|Mazamet": 119,
+
+  "Aéroport Toulouse-Blagnac|Lavaur": 109,
+  "Gare Toulouse-Matabiau|Lavaur": 99,
+
+  "Aéroport Toulouse-Blagnac|Revel": 109,
+  "Gare Toulouse-Matabiau|Revel": 99,
+
+  "Aéroport Toulouse-Blagnac|Saint-Ferréol": 119,
+  "Gare Toulouse-Matabiau|Saint-Ferréol": 109,
+
+  "Aéroport Toulouse-Blagnac|Castelnaudary": 109,
+  "Gare Toulouse-Matabiau|Castelnaudary": 99,
+
+  "Aéroport Toulouse-Blagnac|Montauban": 99,
+  "Gare Toulouse-Matabiau|Montauban": 89,
+
+  "Aéroport Toulouse-Blagnac|Moissac": 109,
+  "Gare Toulouse-Matabiau|Moissac": 99,
+
+  "Aéroport Toulouse-Blagnac|Castelsarrasin": 109,
+  "Gare Toulouse-Matabiau|Castelsarrasin": 99,
+};
+
+const prix =
+  tarifs[`${formData.pickup}|${formData.destination}`] ?? 0;
   useEffect(() => {
-    if (!pickupParam && !destinationParam) return;
+    emailjs.init(PUBLIC_KEY);
+  }, []);
 
-    setFormData((prev) => ({
-      ...prev,
-      pickup: pickupParam ?? prev.pickup,
-      destination: destinationParam ?? prev.destination,
-    }));
-  }, [pickupParam, destinationParam]);
-
-  const prix = tarifs[`${formData.pickup}|${formData.destination}`] ?? 0;
-
-  const handleStripePayment = async () => {
+const handleStripePayment = async () => {
   if (!formData.email) {
     setStatus({ type: 'error', message: 'Veuillez renseigner votre adresse e-mail avant de payer.' });
     return;
@@ -151,7 +124,7 @@ export default function BookingForm() {
     const message = error instanceof Error ? error.message : 'Erreur inconnue pendant le paiement.';
     setStatus({ type: 'error', message });
   }
-  };
+};
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -180,36 +153,45 @@ export default function BookingForm() {
 
     const estimatedPrice = prix > 0 ? `${prix} EUR` : 'Non calcule';
 
+    const templateParams = {
+      // Variables principales utilisees par le template EmailJS.
+      full_name: formData.name,
+      customer_email: formData.email,
+      customer_phone: formData.phone,
+      passengers_count: formData.passengers,
+      pickup_address: formData.pickup,
+      destination_address: formData.destination,
+      desired_datetime: formData.date,
+      bags_count: formData.bags,
+      trip_type: formData.trip_type,
+      customer_message: formData.message || 'Aucun message complementaire.',
+      estimated_price: estimatedPrice,
+      request_datetime: requestDateTime,
+
+      // Variables de compatibilite usuelles EmailJS.
+      from_name: formData.name,
+      name: formData.name,
+      email: formData.email,
+      reply_to: formData.email,
+      phone: formData.phone,
+      pickup: formData.pickup,
+      departure: formData.pickup,
+      destination: formData.destination,
+      arrival: formData.destination,
+      date: formData.date,
+      travel_date: formData.date,
+      passengers: formData.passengers,
+      message: formData.message || 'Aucun message complementaire.',
+      user_message: formData.message || 'Aucun message complementaire.',
+    };
+
     try {
-      const response = await fetch('/api/booking-request', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          estimated_price: estimatedPrice,
-          request_datetime: requestDateTime,
-        }),
-      });
-
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data?.error || 'Impossible d\'envoyer la demande de transfert.');
-      }
-
-      if (data?.sentBy === 'client') {
-        const serviceId = data?.serviceId || SERVICE_ID;
-        const templateId = data?.templateId || TEMPLATE_ID;
-        const publicKey = data?.publicKey || PUBLIC_KEY;
-        const templateParams = data?.templateParams || {
-          ...formData,
-          estimated_price: estimatedPrice,
-          request_datetime: requestDateTime,
-        };
-
-        await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      }
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        PUBLIC_KEY
+      );
 
       setStatus({
         type: 'success',
@@ -217,13 +199,10 @@ export default function BookingForm() {
       });
       setFormData(initialForm);
     } catch (error) {
-      console.error('Booking request error:', error);
-      const message = error instanceof Error
-        ? error.message
-        : 'Une erreur est survenue. Veuillez nous contacter directement par téléphone.';
+      console.error('EmailJS error:', error);
       setStatus({
         type: 'error',
-        message,
+        message: 'Une erreur est survenue. Veuillez nous contacter directement par téléphone.',
       });
     }
   };
@@ -321,11 +300,12 @@ export default function BookingForm() {
   className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
 >
   <option value="">Choisir un départ</option>
-  {locations.map((location) => (
-    <option key={location} value={location}>
-      {location}
-    </option>
-  ))}
+  <option value="Aéroport Toulouse-Blagnac">
+    ✈️ Aéroport Toulouse-Blagnac
+  </option>
+  <option value="Gare Toulouse-Matabiau">
+    🚆 Gare Toulouse-Matabiau
+  </option>
 </select>
           </div>
 
@@ -342,11 +322,16 @@ export default function BookingForm() {
   className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
 >
   <option value="">Choisir une destination</option>
-  {locations.map((location) => (
-    <option key={location} value={location}>
-      {location}
-    </option>
-  ))}
+  <option value="Castres">Castres</option>
+  <option value="Albi">Albi</option>
+  <option value="Mazamet">Mazamet</option>
+  <option value="Lavaur">Lavaur</option>
+  <option value="Revel">Revel</option>
+  <option value="Saint-Ferréol">Saint-Ferréol</option>
+  <option value="Castelnaudary">Castelnaudary</option>
+  <option value="Montauban">Montauban</option>
+  <option value="Moissac">Moissac</option>
+  <option value="Castelsarrasin">Castelsarrasin</option>
 </select>
           </div>
 

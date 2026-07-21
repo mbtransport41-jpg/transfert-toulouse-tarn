@@ -37,12 +37,14 @@ const transferLinks = [
   { label: "Gare Matabiau - Montauban", href: "/transfert/gare-matabiau-montauban", group: "Gare Matabiau" },
   { label: "Gare Matabiau - Moissac", href: "/transfert/gare-matabiau-moissac", group: "Gare Matabiau" },
   { label: "Gare Matabiau - Castelsarrasin", href: "/transfert/gare-matabiau-castelsarrasin", group: "Gare Matabiau" },
+  { label: "Sorèze ↔ Carcassonne", href: "/transfert/soreze-carcassonne", group: "Liaison spéciale" },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const airportLinks = transferLinks.filter((item) => item.group === "Aéroport");
   const stationLinks = transferLinks.filter((item) => item.group === "Gare Matabiau");
+  const specialLinks = transferLinks.filter((item) => item.group === "Liaison spéciale");
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-amber-500/20 bg-black/95 backdrop-blur">
@@ -85,6 +87,16 @@ export default function Header() {
               ))}
               <p className="mt-2 px-3 pb-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Gare Matabiau</p>
               {stationLinks.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition hover:bg-white/10 hover:text-amber-300"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <p className="mt-2 px-3 pb-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Liaison spéciale</p>
+              {specialLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}

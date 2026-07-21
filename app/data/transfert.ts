@@ -6,7 +6,7 @@ export type FaqItem = {
 export type Transfer = {
   id: string;
   slug: string;
-  origin: "aeroport" | "gare";
+  origin: "aeroport" | "gare" | "special";
   depart: string;
   arrivee:
     | "Castres"
@@ -656,6 +656,30 @@ const baseTransfers: Omit<Transfer, "seoParagraphs" | "faq">[] = [
     ],
     intro:
       "Rejoignez Castelsarrasin depuis la gare Toulouse-Matabiau avec un chauffeur privé premium, ponctuel et discret.",
+  },
+  {
+    id: "special-soreze-carcassonne",
+    slug: "soreze-carcassonne",
+    origin: "special",
+    depart: "Sorèze",
+    arrivee: "Carcassonne",
+    prix: 139,
+    temps: "1h05",
+    distanceKm: 72,
+    image: "/Soreze.png",
+    title: "Sorèze ↔ Carcassonne",
+    metaDescription:
+      "Réservez votre aller-retour Sorèze ↔ Carcassonne en chauffeur privé. Tarif fixe 139 EUR TTC, service premium et réservation simple 24h/24.",
+    keywords: [
+      "Sorèze Carcassonne",
+      "chauffeur privé Sorèze",
+      "chauffeur privé Carcassonne",
+      "aller-retour Sorèze Carcassonne",
+      "transport privé Aude",
+      "VTC Occitanie",
+    ],
+    intro:
+      "Pour un aller-retour entre Sorèze et Carcassonne, Toulouse Tarn Transfert propose un trajet premium avec tarif fixe, réservation simple et accompagnement fiable.",
   },
 ];
 
