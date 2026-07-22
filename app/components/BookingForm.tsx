@@ -334,6 +334,11 @@ const handleStripePayment = async () => {
   className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
 >
   <option value="">Choisir une destination</option>
+
+<option value="Aéroport Toulouse-Blagnac">✈️ Aéroport Toulouse-Blagnac</option>
+
+<option value="Gare Toulouse-Matabiau">🚆 Gare Toulouse-Matabiau</option>
+
   <option value="Castres">Castres</option>
   <option value="Albi">Albi</option>
   <option value="Mazamet">Mazamet</option>
