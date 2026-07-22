@@ -306,6 +306,18 @@ const handleStripePayment = async () => {
   <option value="Gare Toulouse-Matabiau">
     🚆 Gare Toulouse-Matabiau
   </option>
+
+<option value="Castres">Castres</option>
+<option value="Albi">Albi</option>
+<option value="Mazamet">Mazamet</option>
+<option value="Lavaur">Lavaur</option>
+<option value="Revel">Revel</option>
+<option value="Saint-Ferréol">Saint-Ferréol</option>
+<option value="Castelnaudary">Castelnaudary</option>
+<option value="Montauban">Montauban</option>
+<option value="Moissac">Moissac</option>
+<option value="Castelsarrasin">Castelsarrasin</option>
+
 </select>
           </div>
 
